@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/desk/desk",
     "pages/index/index",
+    "pages/desk/desk",
     "pages/bless/bless",
     "pages/result/result",
     "pages/webView/webView"
