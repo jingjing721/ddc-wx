@@ -1,5 +1,6 @@
 <!--pages/bless/bless.wxml-->
 <view>
+  <view class="bless_title">最后许个愿吧</view>
   <view wx:for="{{blessList}}" wx:key="{{index}}" data-text="{{item}}" bindtap="bindList">{{item}}</view>
   <input bindinput="bindBless" placeholder="请输入你的装逼宣言！" value="{{blessText}}" />
   <button
