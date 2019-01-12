@@ -21,7 +21,7 @@
     </movable-view>
   </movable-area>
   <view class="scroll-bg">
-    <scroll-view  scroll-x>
+    <scroll-view class="scroll-view_h" scroll-x>
       <view class="scroll-view_tab">
         <view wx:for="{{viewData}}" wx:key="{{item.classID}}" data-index="{{index}}" bindtap="bindClass" class="view-class active-{{isActive == index}}">{{item.title}}</view>
       </view>
