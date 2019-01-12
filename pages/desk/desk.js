@@ -12,12 +12,47 @@ Page({
 		      },
 			    {
 				    src: '../../images/2.jpg',
-				    id: 2
+				    id: 2,
 			    },
 			    {
 				    src: '../../images/1.jpg',
-				    id: 3
-			    }]
+				    id: 3,
+          }, {
+            src: '../../images/5.png',
+            id: 4,
+          },
+          {
+            src: '../../images/4.png',
+            id: 5,
+          },
+          {
+            src: '../../images/6.png',
+            id: 6,
+          },
+          {
+            src: '../../images/4.png',
+            id: 7,
+          },
+          {
+            src: '../../images/5.png',
+            id: 8,
+          },
+          {
+            src: '../../images/6.png',
+            id: 9,
+          },
+          {
+            src: '../../images/3.jpg',
+            id: 10,
+          },
+          {
+            src: '../../images/2.jpg',
+            id: 11,
+          },
+          {
+            src: '../../images/1.jpg',
+            id: 12,
+          }]
 	    },
 	    {
 		    title: '水产',
@@ -110,8 +145,8 @@ Page({
 			return false
 		}
     let src = this.data.listData[e.currentTarget.dataset.index];
-        src.x = 0;
-        src.y = 0;
+        src.x = '295rpx';
+        src.y = '305rpx';
         src.zindex = this.data.maxZnum++
         this.setData({
           scaleSrc: app.utils.deepCopy(this.data.scaleSrc.concat(src))

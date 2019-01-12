@@ -17,7 +17,7 @@
           class="scale-img"
           src="{{item.src}}"
       ></image>
-      <view class="close" catchtap="bindClose" data-index="{{index}}">X</view>
+      <view class="close" catchtap="bindClose" data-index="{{index}}">×</view>
     </movable-view>
   </movable-area>
   <view class="scroll-bg">
@@ -38,5 +38,6 @@
   <button
       type="primary"
       bindtap="bindNext"
-  >下一步</button>
+      class="nextStep"
+  >继续</button>
 </view>
