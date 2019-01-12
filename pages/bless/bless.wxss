@@ -4,7 +4,7 @@
   font-size:36rpx;
   color: #FF697E;
   text-align: center;
-  margin: 12rpx auto;
+  margin: 14rpx auto;
 }
 .bless_list{
   width: 660rpx;
@@ -12,13 +12,13 @@
   padding: 0 13rpx;
   line-height: 108rpx;
   border-radius:32px;
-  font-size: 48rpx;
+  font-size: 42rpx;
   color: #ffffff;
   text-align: center;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  margin: 0 auto 12rpx;
+  margin: 0 auto 14rpx;
   position: relative;
 }
 .bless_list0{
@@ -46,6 +46,7 @@
   background: #ffffff;
   box-shadow:0px -4px 16px 0px rgba(146,146,146,0.2);
   padding: 32rpx 0 26rpx;
+  margin-top: 20rpx;
 }
 .bless_input{
   width: 628rpx;
