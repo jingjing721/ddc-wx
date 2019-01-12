@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da076df0-bbdd-44af-a5c4-374ad855497c" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/images/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/desk/desk.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/desk/desk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/bless/bless.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/bless/bless.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/bless/bless.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/bless/bless.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/bless/bless.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/bless/bless.wxss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/desk/desk.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/desk/desk.wxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/desk/desk.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/desk/desk.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.wxss" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,19 +31,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/desk/desk.wxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/desk/desk.wxss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="30" column="23" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+            <state relative-caret-position="257">
+              <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -52,8 +42,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
+            <state relative-caret-position="104">
               <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/result/result.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="293">
+              <caret line="32" column="28" lean-forward="true" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -251,6 +250,12 @@
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="desk" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ddc-eve" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ddc-eve" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="result" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -306,12 +311,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101916000" />
+    <option name="totallyTimeSpent" value="102726000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="807" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49932525" visible="true" weight="0.17547569" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49932525" visible="true" weight="0.16208598" />
       <window_info id="Structure" order="1" sideWeight="0.5006748" side_tool="true" weight="0.17547569" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -420,8 +426,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/result/result.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-101">
-          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+        <state relative-caret-position="293">
+          <caret line="32" column="28" lean-forward="true" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -507,7 +513,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
+        <state relative-caret-position="104">
           <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
         </state>
       </provider>
@@ -521,8 +527,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/desk/desk.wxss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="30" column="23" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+        <state relative-caret-position="257">
+          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
         </state>
       </provider>
     </entry>
