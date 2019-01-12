@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="da076df0-bbdd-44af-a5c4-374ad855497c" name="Default" comment="" />
+    <list default="true" id="da076df0-bbdd-44af-a5c4-374ad855497c" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/images/4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/desk/desk.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/desk/desk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/desk/desk.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/desk/desk.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/desk/desk.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/desk/desk.wxss" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -293,12 +301,12 @@
       <workItem from="1546680445540" duration="3327000" />
       <workItem from="1546827542516" duration="3081000" />
       <workItem from="1546839367092" duration="59769000" />
-      <workItem from="1547273368406" duration="887000" />
+      <workItem from="1547273368406" duration="263000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102540000" />
+    <option name="totallyTimeSpent" value="101916000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="807" extended-state="0" />
