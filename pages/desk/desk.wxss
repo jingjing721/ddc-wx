@@ -1,0 +1,61 @@
+/**index.wxss**/
+.movable-wrap {
+  width: 100%;
+  height: 330px;
+}
+.scroll-bg {
+  background: #fff;
+}
+movable-view{
+  width: 200 rpx;
+  height: 200 rpx;
+}
+.scroll-view_tab {
+  width: 100%;
+  height: 100rpx;
+  white-space: nowrap;
+  display: flex;
+  -webkit-align-items:center;
+  align-items:center;
+  justify-content: center;
+}
+.scroll-view_tab view{
+  padding: 0rpx 20rpx;
+  display: inline-block;
+  color: #9094A0;
+  font-size: 26rpx;
+}
+.scroll-view_tab view.active-true {
+  background:linear-gradient(302deg,rgba(255,101,131,1) 0%,rgba(255,121,108,1) 51%,rgba(255,190,103,1) 100%);
+  color: #fff;
+}
+.view-img {
+  display: inline-block;
+  width: 200rpx;
+  height: 200rpx;
+  margin: 5rpx;
+}
+.scale-img {
+  width: 100%;
+  height: 100%;
+}
+
+.close {
+  width: 50rpx;
+  height: 50rpx;
+  text-align: center;
+  margin: auto;
+  background: #f0f;
+  color: #fff;
+  font-size: 38rpx;
+  position: absolute;
+  top: -10rpx;
+  right: 0;
+  border-radius: 50%;
+  
+}
+
+.view-img.block::before{
+  content: ' . ';
+  display: block;
+}

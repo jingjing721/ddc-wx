@@ -1,0 +1,7 @@
+<!--pages/index/index.wxml-->
+<view>
+  <text>晒一晒新年的餐桌</text>
+  <button open-type="getUserInfo" type="primary" lang="zh_CN" bindgetuserinfo="bindNext">
+    挑选美食
+  </button>
+</view>

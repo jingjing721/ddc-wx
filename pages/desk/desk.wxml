@@ -1,0 +1,42 @@
+<!--index.wxml-->
+<view class="container">
+  <movable-area class="movable-wrap" style="background: url({{bgUrl}}); background-size: 100% 100%">
+    <movable-view
+        bindchange="onChange"
+        direction="all"
+        catchtap="bindZindex"
+        wx:for="{{scaleSrc}}"
+        wx:key="{{index}}"
+        data-index="{{index}}"
+        animation="{{false}}"
+        x="{{item.x}}"
+        y="{{item.y}}"
+        style="z-index:{{item.zindex}}"
+    >
+      <image
+          class="scale-img"
+          src="{{item.src}}"
+      ></image>
+      <view class="close" catchtap="bindClose" data-index="{{index}}">X</view>
+    </movable-view>
+  </movable-area>
+  <view class="scroll-bg">
+    <scroll-view  scroll-x>
+      <view class="scroll-view_tab">
+        <view wx:for="{{viewData}}" wx:key="{{item.classID}}" data-index="{{index}}" bindtap="bindClass" class="view-class active-{{isActive == index}}">{{item.title}}</view>
+      </view>
+    </scroll-view>
+    <scroll-view class="scroll-view_cont" scroll-x style="width: 100%; white-space: nowrap; display: flex">
+      <view class="left">
+          <image wx:for="{{listData}}" wx:if="{{index%2 == 0}}" src="{{item.src}}" wx:key="{{item.id}}" class="view-img" data-index="{{index}}" data-cid="{{item.cid}}" bindtap="bindAdd"></image>
+      </view>
+      <view class="right">
+          <image wx:for="{{listData}}" wx:if="{{index%2 == 1}}" src="{{item.src}}" wx:key="{{item.id}}" class="view-img" data-index="{{index}}" data-cid="{{item.cid}}" bindtap="bindAdd"></image>
+      </view>
+    </scroll-view>
+  </view>
+  <button
+      type="primary"
+      bindtap="bindNext"
+  >下一步</button>
+</view>

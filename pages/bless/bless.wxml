@@ -1,0 +1,11 @@
+<!--pages/bless/bless.wxml-->
+<view>
+  <view wx:for="{{blessList}}" wx:key="{{index}}" data-text="{{item}}" bindtap="bindList">{{item}}</view>
+  <input bindinput="bindBless" placeholder="请输入你的装逼宣言！" value="{{blessText}}" />
+  <button
+      type="primary"
+      bindtap="bindNext"
+  >
+    祝福语
+  </button>
+</view>
