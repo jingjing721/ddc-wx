@@ -6,39 +6,41 @@ Page({
     viewData: [{
 		    title: '肉类',
 		    classID: 2,
-		    content: [{
-            src: '../../images/3.jpg',
+		    content: [
+		    	{
+            src: 'https://mcn-video.daydaycook.com.cn/d4759738f014494cb6251d6f1c044bb8.png',
             id: 1,
 		      },
 			    {
-				    src: '../../images/2.jpg',
+				    src: 'https://mcn-video.daydaycook.com.cn/ae5f074b57094d62b42f445887e8caf3.png',
 				    id: 2,
 			    },
 			    {
-				    src: '../../images/1.jpg',
+				    src: 'https://mcn-video.daydaycook.com.cn/68e366d9c85044c3b2f640bed5a62345.png',
 				    id: 3,
-          }, {
-            src: '../../images/5.png',
+          },
+			    {
+            src: 'https://mcn-video.daydaycook.com.cn/d4759738f014494cb6251d6f1c044bb8.png',
             id: 4,
           },
           {
-            src: '../../images/4.png',
+            src: 'https://mcn-video.daydaycook.com.cn/ae5f074b57094d62b42f445887e8caf3.png',
             id: 5,
           },
           {
-            src: '../../images/6.png',
+            src: 'https://mcn-video.daydaycook.com.cn/68e366d9c85044c3b2f640bed5a62345.png',
             id: 6,
           },
           {
-            src: '../../images/4.png',
+            src: 'https://mcn-video.daydaycook.com.cn/d4759738f014494cb6251d6f1c044bb8.png',
             id: 7,
           },
           {
-            src: '../../images/5.png',
+            src: 'https://mcn-video.daydaycook.com.cn/68e366d9c85044c3b2f640bed5a62345.png',
             id: 8,
           },
           {
-            src: '../../images/6.png',
+            src: 'https://mcn-video.daydaycook.com.cn/ae5f074b57094d62b42f445887e8caf3.png',
             id: 9,
           },
           {
@@ -52,7 +54,23 @@ Page({
           {
             src: '../../images/1.jpg',
             id: 12,
-          }]
+          },
+			    {
+				    src: 'https://mcn-video.daydaycook.com.cn/68e366d9c85044c3b2f640bed5a62345.png',
+				    id: 6,
+			    },
+			    {
+				    src: 'https://mcn-video.daydaycook.com.cn/d4759738f014494cb6251d6f1c044bb8.png',
+				    id: 7,
+			    },
+			    {
+				    src: 'https://mcn-video.daydaycook.com.cn/68e366d9c85044c3b2f640bed5a62345.png',
+				    id: 8,
+			    },
+			    {
+				    src: 'https://mcn-video.daydaycook.com.cn/ae5f074b57094d62b42f445887e8caf3.png',
+				    id: 9,
+			    }]
 	    },
 	    {
 		    title: '水产',
@@ -145,8 +163,8 @@ Page({
 			return false
 		}
     let src = this.data.listData[e.currentTarget.dataset.index];
-        src.x = '295rpx';
-        src.y = '305rpx';
+        src.x = 150;
+        src.y = 150;
         src.zindex = this.data.maxZnum++
         this.setData({
           scaleSrc: app.utils.deepCopy(this.data.scaleSrc.concat(src))
