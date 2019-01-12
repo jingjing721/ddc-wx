@@ -10,12 +10,15 @@ Page({
 	  blessData: [],
 	  bg: '',
     blessText: '',
+    currentIndex: -1,
     blessList: [
-      '老子云：莫要装逼',
-      '孔子云：不装逼咋行',
-      '孟子云：装逼要挨揍',
-      '墨子云：装逼带节奏',
-      '老夫子云：装完逼就要跑'
+      '锦鲤附身',
+      '吃货这条道路上越走越远吃货这条道路上越走越远',
+      '阖家幸福',
+      '吃得饱睡得好',
+      '要啥来啥',
+      '发帖被加精',
+      '脱贫脱单不脱发'
     ]
   },
 
@@ -28,12 +31,15 @@ Page({
   },
 	bindBless(e) {
     this.setData({
-	    blessText: e.detail.value
+	    blessText: e.detail.value,
+      currentIndex: -1,
     })
   },
 	bindList(e) {
+    let index = e.currentTarget.dataset.index;
 		this.setData({
-			blessText: e.currentTarget.dataset.text
+			blessText: e.currentTarget.dataset.text,
+      currentIndex: index
 		})
   },
   /**

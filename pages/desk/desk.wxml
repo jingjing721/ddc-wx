@@ -39,5 +39,5 @@
       type="primary"
       bindtap="bindNext"
       class="nextStep"
-  >继续</button>
+  >继 续</button>
 </view>

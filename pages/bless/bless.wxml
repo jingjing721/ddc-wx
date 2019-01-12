@@ -1,11 +1,19 @@
 <!--pages/bless/bless.wxml-->
 <view>
-  <view wx:for="{{blessList}}" wx:key="{{index}}" data-text="{{item}}" bindtap="bindList">{{item}}</view>
-  <input bindinput="bindBless" placeholder="请输入你的装逼宣言！" value="{{blessText}}" />
-  <button
-      type="primary"
-      bindtap="bindNext"
-  >
-    祝福语
-  </button>
+  <view class="bless_title">最后许个愿吧</view>
+  <view class="bless_list bless_list{{index}} {{currentIndex == index ? 'active':''}} " wx:for="{{blessList}}" wx:key="{{index}}" data-text="{{item}}" data-index="{{index}}" bindtap="bindList">
+  {{item}}
+   <view class="selected_icon"></view>
+  </view>
+
+  <view class="bless_bottom">
+    <input class="bless_input" placeholder-class="placeholder_input" bindinput="bindBless" placeholder="您也能在这里写下您的新年祝福哦！" value="{{blessText}}" />
+    <button
+        type="primary"
+        bindtap="bindNext"
+        class="nextStep"
+    >
+      继 续
+    </button>
+  </view>
 </view>

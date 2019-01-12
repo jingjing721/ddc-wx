@@ -1,0 +1,13 @@
+.nextStep{
+  width: 532rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  background:linear-gradient(302deg,#FF6583 0%,#FF796C 51%,#FFBE67 100%);
+  box-shadow: 5rpx 5rpx 10rpx #FFBE67;
+  border-radius:50px;
+  border: none;
+  margin-top: 50rpx;
+  font-size: 40rpx;
+  color: #ffffff;
+  margin-bottom: 26rpx;
+}

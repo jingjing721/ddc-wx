@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="da076df0-bbdd-44af-a5c4-374ad855497c" name="Default" comment="">
+    <list default="true" id="780c3ad9-0f5d-409c-8235-2d41f7bb8b34" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/close.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/close@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/close.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/desk/desk.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/desk/desk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/result/result.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/result/result.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/project.config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/dict.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/dict.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/bless/bless.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/bless/bless.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/bless/bless.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/bless/bless.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/bless/bless.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/bless/bless.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/desk/desk.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/desk/desk.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/desk/desk.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/desk/desk.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.wxss" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/.tmp/" />
-    <ignored path="$PROJECT_DIR$/temp/" />
-    <ignored path="$PROJECT_DIR$/tmp/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,11 +33,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="result.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="result.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/result/result.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="110" selection-start-line="110" selection-end-line="110" />
+            <state relative-caret-position="247">
+              <caret line="106" column="27" lean-forward="true" selection-start-line="106" selection-start-column="27" selection-end-line="106" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -69,49 +74,11 @@
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>url</find>
-      <find>strUrl</find>
-      <find>scale-area</find>
-      <find>params</find>
-      <find>blessText</find>
-      <find>deepCopy</find>
-      <find>urlEncode</find>
-      <find>setCache</find>
-      <find>onShareAppMessage</find>
-      <find>index</find>
-      <find>method</find>
-      <find>http</find>
-      <find>utils</find>
-      <find>onLaunch</find>
-      <find>app</find>
-      <find>bg</find>
-      <find>bindClass</find>
-      <find>listData</find>
-      <find>maxZnum</find>
-      <find>bindCode</find>
-      <find>movable-wrap</find>
-      <find>app.dict</find>
-      <find>scroll-view_H</find>
-      <find>viewData</find>
-      <find>scroll-view_tab</find>
-      <find>resultBg</find>
-      <find>drawImage</find>
-      <find>bgUrl</find>
       <find>movable-view</find>
       <find>getImageInfo</find>
     </findStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$/utils</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -119,26 +86,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app.wxss" />
-        <option value="$PROJECT_DIR$/pages/index/index.wxss" />
-        <option value="$PROJECT_DIR$/pages/index/index.json" />
-        <option value="$PROJECT_DIR$/pages/bless/bless.wxml" />
-        <option value="$PROJECT_DIR$/utils/util.js" />
-        <option value="$PROJECT_DIR$/utils/http.js" />
-        <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/pages/index/index.wxml" />
-        <option value="$PROJECT_DIR$/pages/bless/bless.js" />
-        <option value="$PROJECT_DIR$/pages/webView/webView.wxml" />
-        <option value="$PROJECT_DIR$/pages/index/index.js" />
-        <option value="$PROJECT_DIR$/pages/desk/desk.wxml" />
-        <option value="$PROJECT_DIR$/pages/desk/desk.wxss" />
-        <option value="$PROJECT_DIR$/pages/result/result.wxss" />
-        <option value="$PROJECT_DIR$/pages/result/result.wxml" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/app.json" />
-        <option value="$PROJECT_DIR$/utils/dict.js" />
-        <option value="$PROJECT_DIR$/pages/desk/desk.js" />
-        <option value="$PROJECT_DIR$/pages/result/result.js" />
       </list>
     </option>
   </component>
@@ -159,7 +107,7 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Project Files" proportions="" version="1">
       <showMembers ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
@@ -171,6 +119,11 @@
               <item name="Root" type="cbb8eebc:String" user="Root" />
               <item name="ddc-eve" type="cbb8eebc:String" user="ddc-eve" />
             </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="ddc-eve" type="cbb8eebc:String" user="ddc-eve" />
+              <item name="utils" type="cbb8eebc:String" user="utils" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -181,11 +134,6 @@
             <path>
               <item name="ddc-eve" type="b2602c69:ProjectViewProjectNode" />
               <item name="ddc-eve" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ddc-eve" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ddc-eve" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ddc-eve" type="b2602c69:ProjectViewProjectNode" />
@@ -209,12 +157,6 @@
       </pane>
     </panes>
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/images" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
-  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -228,7 +170,7 @@
     </option>
   </component>
   <component name="SvnConfiguration">
-    <configuration>$USER_HOME$/.subversion</configuration>
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -240,12 +182,12 @@
       <workItem from="1546567364854" duration="35476000" />
       <workItem from="1546680445540" duration="3327000" />
       <workItem from="1546827542516" duration="3081000" />
-      <workItem from="1546839367092" duration="72687000" />
+      <workItem from="1546839367092" duration="73124000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114571000" />
+    <option name="totallyTimeSpent" value="353000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="807" extended-state="0" />
@@ -270,16 +212,8 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="1" />
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pages/desk/desk.wxml">
@@ -539,20 +473,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="862">
-          <caret line="94" column="18" selection-start-line="94" selection-start-column="18" selection-end-line="94" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/desk/desk.wxss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -614,10 +534,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="881">
+          <caret line="94" column="18" selection-start-line="94" selection-start-column="18" selection-end-line="94" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pages/result/result.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="110" selection-start-line="110" selection-end-line="110" />
+        <state relative-caret-position="247">
+          <caret line="106" column="27" lean-forward="true" selection-start-line="106" selection-start-column="27" selection-end-line="106" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
