@@ -163,8 +163,8 @@ Page({
 			return false
 		}
     let src = this.data.listData[e.currentTarget.dataset.index];
-        src.x = '295rpx';
-        src.y = '305rpx';
+        src.x = 150;
+        src.y = 150;
         src.zindex = this.data.maxZnum++
         this.setData({
           scaleSrc: app.utils.deepCopy(this.data.scaleSrc.concat(src))
