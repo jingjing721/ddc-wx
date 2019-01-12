@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>close</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="50%" x2="97.7608637%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#FFA069" offset="0%"></stop>
+            <stop stop-color="#FF3A5E" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="4-1" transform="translate(-126.000000, -87.000000)" fill="url(#linearGradient-1)">
+            <g id="Group-7" transform="translate(16.000000, 72.000000)">
+                <g id="Group" transform="translate(80.000000, 8.000000)">
+                    <polygon id="close" transform="translate(36.000000, 13.000000) rotate(45.000000) translate(-36.000000, -13.000000) " points="34.7108911 6 37.3168317 6 37.3168317 11.6831683 43 11.6831683 43 14.2891089 37.3168317 14.2891089 37.3168317 20 34.7108911 20 34.7108911 14.2891089 29 14.2891089 29 11.6831683 34.7108911 11.6831683"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
