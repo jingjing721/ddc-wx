@@ -12,8 +12,10 @@ Page({
 	  resultText: '',
 	  logo: '../../images/logo.png',
 	  close: '../../images/close.png',
-	  code: 'http://pic.qqtn.com/up/2018-1/2018012710125472621.jpg',
+	  code: '../../images/code.png',
 	  resultArray: [],
+	  canvasBg: '',
+	  codeBg: '../../images/codeBg.png'
   },
 
   /**
@@ -33,30 +35,24 @@ Page({
    */
   onReady () {
 		const ctx = wx.createCanvasContext('canvasId');
-		this.getImageInfoBg().then(this.getImageInfo).then(()=> {
+		Promise.all([this.getImageInfoBg()].concat(this.getImageInfo())).then((sucRes) => {
+			sucRes.shift()
+			this.data.resultData.forEach((item, index) => {
+				item.src = sucRes[index].path
+			})
 			this.drawImg(ctx);
 			this.drawText(ctx);
 			ctx.draw();
+			setTimeout(() => {
+				this.drawPicture();
+			}, 500)
+		}, () => {
+				app.utils.showToast('图片资源获取失败');
 		})
-		//ctx.drawImage(this.data.resultBg, this.remSize(16), this.remSize(30), this.remSize(310), this.remSize(300)); // 绘制背景图
-
-		// ctx.drawImage(this.data.logo, this.remSize(80), this.remSize(8), this.remSize(18), this.remSize(18)) // 绘制logo
-		// ctx.drawImage(this.data.close, this.remSize(106), this.remSize(12), this.remSize(10), this.remSize(10)) // 绘制close
-		// ctx.setFontSize(14);
-		// ctx.setFillStyle("#000");
-		// ctx.fillText(`${userInfo.nickName}的新年餐桌`, this.remSize(128),this.remSize(22))
-	//	this.data.resultData.sort(this.sortNumber('zindex')) // 排序之后绘制层级
-	// 	this.data.resultData.forEach((item) => { // 绘制 手动添加的菜品
-	// 		ctx.drawImage(item.src, item.x, item.y, this.remSize(100), this.remSize(100));
-   //  })
-		// ctx.fillText(this.data.resultText, 50, 280)
-		// ctx.drawImage(this.data.code, 0, 0, 120, 120) // 绘制背景
-
 
 		// this.data.resultData.forEach((item) => {
 		// 	 this.data.resultArray.push(item.id)
 		// })
-
 			//console.log(this.data.resultArray.toString(), 'ctx');
   },
 	/*
@@ -66,13 +62,15 @@ Page({
 	 * Date: 2019/1/12
 	 */
 	drawImg(ctx) {
-		console.log(this.data.resultData, 'ca')
-		ctx.drawImage(this.data.resultBg, this.remSize(16), this.remSize(40), this.remSize(310), this.remSize(300)); // 绘制背景图
-		ctx.drawImage(this.data.logo, this.remSize(80), this.remSize(8), this.remSize(18), this.remSize(18)) // 绘制logo
-		ctx.drawImage(this.data.close, this.remSize(102), this.remSize(12), this.remSize(10), this.remSize(10)) // 绘制close
+		ctx.setFillStyle('#fff')
+		ctx.fillRect(0, 0, 375, 500)
+		ctx.drawImage(this.data.resultBg, 0, 35, 375, 334); // 绘制背景图
+		ctx.drawImage(this.data.logo, 80, 8, 18, 18) // 绘制logo
+		ctx.drawImage(this.data.close, 102, 12, 10, 10) // 绘制close
+		ctx.drawImage(this.data.code, 270, 330, 100, 100) // 绘制code
 		this.data.resultData.sort(this.sortNumber('zindex')) // 排序之后绘制层级
 		this.data.resultData.forEach((item) => { // 绘制 手动添加的菜品
-			ctx.drawImage(item.src, item.x, item.y, this.remSize(100), this.remSize(100));
+			ctx.drawImage(item.src, item.x, item.y + 35, 74, 74);
 		})
 	},
 	/*
@@ -82,40 +80,41 @@ Page({
 	 * Date: 2019/1/12
 	 */
 	drawText(ctx) {
-		console.log(ctx.measureText(this.data.resultText).width, wx.getSystemInfoSync())
 		let userInfo = app.utils.getCache('userInfo');
 		ctx.setFontSize(14);
 		ctx.setFillStyle("#000");
-		ctx.fillText(`${userInfo.nickName}的新年餐桌`, this.remSize(120),this.remSize(22))
+		ctx.fillText(`${userInfo.nickName}的新年餐桌`, 120, 22)
 		ctx.setTextAlign('center');
 		ctx.setFillStyle("#fb7f59");
-		ctx.fillText(this.data.resultText, wx.getSystemInfoSync().windowWidth / 2, 60)
-	//	ctx.fillText(this.data.resultText, 50, 280); // 祝福语
+		ctx.fillText(this.data.resultText, wx.getSystemInfoSync().windowWidth / 2, 60);
+		ctx.setFillStyle("#000");
+		ctx.fillText('扫码搭配你的新年餐桌', 170, 400);
+		ctx.fillText('日日煮APP，发现生活的味道', 150, 420);
 	},
 	/*
 	 * Description: 对网络图片进行遍历下载之后在绘制canvas
 	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
 	 * Date: 2019/1/12
 	 */
-	getImageInfo() {
-		let that = this;
-		return new Promise(resolve => {
-			this.data.resultData.forEach((item, index) => {
-				wx.getImageInfo({
-					src: item.src, // 服务器返回的带参数的小程序码地址
-					success: function (res) {
-						item.src = res.path;
-						if (that.data.resultData.length == (index +1)) {
-							resolve(true);
-						}
-					},
-					fail: function () {
-						app.utils.showToast('图片资源获取失败');
-					}
-				})
-			})
-		})
+	getImagePromiseArr(item) {
+	 	return new Promise((resolve, reject) => {
+		  wx.getImageInfo({
+			  src: item.src, // 服务器返回的带参数的小程序码地址
+			  success: resolve,
+			  fail: function () {
+				  app.utils.showToast('图片资源获取失败');
+			  }
+		  })
+	  })
 	},
+	getImageInfo() {
+	 	let promiseArr = []
+		this.data.resultData.map((itm) => {
+			promiseArr.push(this.getImagePromiseArr(itm))
+		})
+		return promiseArr
+	},
+
 	/*
 	 * Description: 单个图片下载处理
 	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
@@ -123,18 +122,19 @@ Page({
 	 */
 	getImageInfoBg(){
 		let that = this;
-		return new Promise(resolve => {
+		return new Promise((resolve => {
 			wx.getImageInfo({
 				src: that.data.resultBg, // 服务器返回的带参数的小程序码地址
 				success: function (res) {
+					console.log(res, 'getImageInfoBg');
 					that.data.resultBg = res.path
-					resolve(true);
+					resolve(true)
 				},
 				fail: function () {
 					app.utils.showToast('图片资源获取失败');
 				}
 			})
-		})
+		}))
 	},
 	/*
 	 * Description: 数组对象进行有小到大排序
@@ -148,26 +148,107 @@ Page({
 			return value1 - value2;
 		}
 	},
-	/*
-	 * Description: 按照375大小转换px 计算不同屏幕设备大小转换
-	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
-	 * Date: 2019/1/7
-	 */
-	remSize (num) {
-		let scale = wx.getSystemInfoSync().windowWidth / 375
-		return num * scale
+	canvasSave() {
+		let that = this;
+		wx.getSetting({
+			success(res) {
+				console.log(res, '授权')
+				if (!res.authSetting['scope.writePhotosAlbum']) {
+					wx.authorize({
+						scope: 'scope.writePhotosAlbum',
+						success(res) {
+							console.log(res)
+								wx.saveImageToPhotosAlbum({
+									filePath: that.data.canvasBg,
+									success(res) {
+										console.log(res)
+										wx.showToast({
+											title: '保存成功'
+										})
+									},
+									fail() {
+										wx.showToast({
+											title: '保存失败',
+											icon: 'none'
+										})
+									}
+								})
+						},
+						fail() {
+							this.canvasSave()
+							console.log('授权失败')
+						}
+					})
+				}
+			}
+		})
 	},
-	bindSave() {
+	/*
+	 * Description: 生产图片路径  显示在页面
+	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
+	 * Date: 2019/1/15
+	 */
+	drawPicture() {
+		let that = this;
 		wx.canvasToTempFilePath({
 			x: 0,
 			y: 0,
-			width: wx.getSystemInfoSync().windowWidth,
-			height: 300,
+			width: 375,
+			height: 500,
 			fileType: 'jpg',
 			canvasId: 'canvasId',
 			success(res) {
-				console.log(res.tempFilePath)
-			}
+				that.setData({
+					canvasBg: res.tempFilePath
+				})
+				// wx.getSetting({
+				// 	success(res){
+				// 		if (!res.authSetting['scope.writePhotosAlbum']) {
+				// 			wx.authorize({
+				// 				scope: 'scope.writePhotosAlbum',
+				// 				success() {
+				// 					wx.saveImageToPhotosAlbum({
+				// 						filePath: res.tempFilePath,
+				// 						success() {
+				// 							wx.showToast({
+				// 								title: '保存成功'
+				// 							})
+				// 						},
+				// 						fail() {
+				// 							wx.showToast({
+				// 								title: '保存失败',
+				// 								icon: 'none'
+				// 							})
+				// 						}
+				// 					})
+				// 				},
+				// 				fail() {
+				// 					// 如果用户拒绝过或没有授权，则再次打开授权窗口
+				// 					//（ps：微信api又改了现在只能通过button才能打开授权设置，以前通过openSet就可打开，下面有打开授权的button弹窗代码）
+				// 					// that.setData({
+				// 					//   openSet: true
+				// 					// })
+				// 				}
+				// 			})
+				// 		}else{
+				// 			wx.saveImageToPhotosAlbum({
+				// 				filePath: res.tempFilePath,
+				// 				success() {
+				// 					wx.showToast({
+				// 						title: '保存成功'
+				// 					})
+				// 				},
+				// 				fail() {
+				// 					wx.showToast({
+				// 						title: '保存失败',
+				// 						icon: 'none'
+				// 					})
+				// 				}
+				// 			})
+				// 		}
+				// 	}
+				// })
+				 		}
 		})
 	},
 	viewOpen() {

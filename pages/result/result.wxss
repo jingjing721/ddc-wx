@@ -1,3 +1,4 @@
+@import "../index.wxss";
 /* pages/result.wxss */
 page{
   height: 100%;
@@ -5,13 +6,36 @@ page{
 .result-wrap {
   width: 100%;
   height: 100%;
-  overflow:hidden;
   background:linear-gradient(302deg,rgba(255,101,131,1) 0%,rgba(255,121,108,1) 51%,rgba(255,190,103,1) 100%);
+  overflow: hidden;
 }
 .canvas-wrap {
-  width: 91%;
-  height: 450px;
+  width: 686rpx;
+  height: 920rpx;
   background: #fff;
   border-radius: 20rpx;
   margin: 16rpx auto 0;
+  overflow: hidden;
+}
+.canvas-wrap image {
+  display: block;
+  width: 94%;
+  min-height: 400px;
+  margin: 0 auto;
+}
+.nextStep {
+  margin: 0 auto;
+}
+.wx-code {
+  width: 600rpx;
+  margin:32rpx auto 0;
+}
+.wx-code image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.loading{
+  text-align: center;
+  margin-top: 100rpx;
 }
