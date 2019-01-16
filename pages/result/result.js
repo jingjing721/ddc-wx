@@ -65,7 +65,7 @@ Page({
 		ctx.drawImage(this.data.code, 270, 330, 100, 100) // 绘制code
 		this.data.resultData.sort(this.sortNumber('zindex')) // 排序之后绘制层级
 		this.data.resultData.forEach((item) => { // 绘制 手动添加的菜品
-			ctx.drawImage(item.foodImg, item.x, item.y + 35, 74, 74);
+			ctx.drawImage(item.foodImg, item.x, item.y + 35, 60, 60);
 		})
 	},
 	/*
