@@ -1,6 +1,4 @@
 // pages/result.js
-import util from "../../utils/util";
-
 const app = getApp();
 Page({
   /**
@@ -14,8 +12,10 @@ Page({
 	  close: '../../images/close.png',
 	  code: '../../images/code.png',
 	  resultArray: [],
-	  canvasBg: '',
-	  codeBg: '../../images/codeBg.png'
+	  canvasBg: '', // 图片路径
+	  codeBg: '../../images/codeBg.png',
+	  saveImgBtnHidden: true, // 保存相册
+	  openSettingBtnHidden: false, // 去授权
   },
 
   /**
@@ -27,8 +27,6 @@ Page({
       resultBg: options.bg,
 	    resultText: options.blessText,
     })
-
-
   },
 	/**
    * 生命周期函数--监听页面初次渲染完成
@@ -36,8 +34,8 @@ Page({
   onReady () {
 		const ctx = wx.createCanvasContext('canvasId');
 		Promise.all([this.getImageInfoBg()].concat(this.getImageInfo())).then((sucRes) => {
-			sucRes.shift()
-			this.data.resultData.forEach((item, index) => {
+			sucRes.shift()  // 只需要 getImageInfo 中的数据
+			this.data.resultData.forEach((item, index) => { // 拉取微信服务器数据之后重新复制 开始绘制
 				item.src = sucRes[index].path
 			})
 			this.drawImg(ctx);
@@ -47,7 +45,7 @@ Page({
 				this.drawPicture();
 			}, 500)
 		}, () => {
-				app.utils.showToast('图片资源获取失败');
+				app.utils.showToast('图片资源获取失败, 请返回上一页重新拉取资源');
 		})
 
 		// this.data.resultData.forEach((item) => {
@@ -80,13 +78,13 @@ Page({
 	 * Date: 2019/1/12
 	 */
 	drawText(ctx) {
-		let userInfo = app.utils.getCache('userInfo');
+		let userInfo = app.utils.getCache('userInfo'); // 获取用户信息
 		ctx.setFontSize(14);
 		ctx.setFillStyle("#000");
-		ctx.fillText(`${userInfo.nickName}的新年餐桌`, 120, 22)
+		ctx.fillText(`${userInfo.nickName}的新年餐桌`, 120, 22) // 绘制头信息
 		ctx.setTextAlign('center');
 		ctx.setFillStyle("#fb7f59");
-		ctx.fillText(this.data.resultText, wx.getSystemInfoSync().windowWidth / 2, 60);
+		ctx.fillText(this.data.resultText, wx.getSystemInfoSync().windowWidth / 2, 60); // 祝福居中
 		ctx.setFillStyle("#000");
 		ctx.fillText('扫码搭配你的新年餐桌', 170, 400);
 		ctx.fillText('日日煮APP，发现生活的味道', 150, 420);
@@ -107,6 +105,11 @@ Page({
 		  })
 	  })
 	},
+	/*
+	 * Description: 循环拉取微信服务端数据
+	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
+	 * Date: 2019/1/15
+	 */
 	getImageInfo() {
 	 	let promiseArr = []
 		this.data.resultData.map((itm) => {
@@ -126,12 +129,11 @@ Page({
 			wx.getImageInfo({
 				src: that.data.resultBg, // 服务器返回的带参数的小程序码地址
 				success: function (res) {
-					console.log(res, 'getImageInfoBg');
 					that.data.resultBg = res.path
 					resolve(true)
 				},
 				fail: function () {
-					app.utils.showToast('图片资源获取失败');
+					app.utils.showToast('图片资源获取失败, 请返回上一页重新拉取资源');
 				}
 			})
 		}))
@@ -148,38 +150,50 @@ Page({
 			return value1 - value2;
 		}
 	},
+	/*
+	 * Description: 保存相册
+	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
+	 * Date: 2019/1/15
+	 */
 	canvasSave() {
 		let that = this;
 		wx.getSetting({
 			success(res) {
-				console.log(res, '授权')
 				if (!res.authSetting['scope.writePhotosAlbum']) {
 					wx.authorize({
 						scope: 'scope.writePhotosAlbum',
-						success(res) {
-							console.log(res)
-								wx.saveImageToPhotosAlbum({
-									filePath: that.data.canvasBg,
-									success(res) {
-										console.log(res)
-										wx.showToast({
-											title: '保存成功'
-										})
-									},
-									fail() {
-										wx.showToast({
-											title: '保存失败',
-											icon: 'none'
-										})
-									}
-								})
+						success() { // 第一次 直接授权保存
+							that.saveImageToPhotosAlbum()
 						},
 						fail() {
-							this.canvasSave()
-							console.log('授权失败')
+							that.setData({
+								saveImgBtnHidden: false,
+								openSettingBtnHidden: true
+							})
 						}
 					})
+				} else { // 拒绝授权之后 在授权执行保存
+					that.saveImageToPhotosAlbum();
 				}
+			}
+		})
+	},
+	/*
+	 * Description: 保存到相册
+	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
+	 * Date: 2019/1/15
+	 */
+	saveImageToPhotosAlbum() {
+		let that = this;
+		wx.saveImageToPhotosAlbum({
+			filePath: that.data.canvasBg,
+			success() {
+				wx.showToast({
+					title: '保存成功'
+				})
+			},
+			fail() {
+				app.utils.showToast('保存失败')
 			}
 		})
 	},
@@ -201,56 +215,42 @@ Page({
 				that.setData({
 					canvasBg: res.tempFilePath
 				})
-				// wx.getSetting({
-				// 	success(res){
-				// 		if (!res.authSetting['scope.writePhotosAlbum']) {
-				// 			wx.authorize({
-				// 				scope: 'scope.writePhotosAlbum',
-				// 				success() {
-				// 					wx.saveImageToPhotosAlbum({
-				// 						filePath: res.tempFilePath,
-				// 						success() {
-				// 							wx.showToast({
-				// 								title: '保存成功'
-				// 							})
-				// 						},
-				// 						fail() {
-				// 							wx.showToast({
-				// 								title: '保存失败',
-				// 								icon: 'none'
-				// 							})
-				// 						}
-				// 					})
-				// 				},
-				// 				fail() {
-				// 					// 如果用户拒绝过或没有授权，则再次打开授权窗口
-				// 					//（ps：微信api又改了现在只能通过button才能打开授权设置，以前通过openSet就可打开，下面有打开授权的button弹窗代码）
-				// 					// that.setData({
-				// 					//   openSet: true
-				// 					// })
-				// 				}
-				// 			})
-				// 		}else{
-				// 			wx.saveImageToPhotosAlbum({
-				// 				filePath: res.tempFilePath,
-				// 				success() {
-				// 					wx.showToast({
-				// 						title: '保存成功'
-				// 					})
-				// 				},
-				// 				fail() {
-				// 					wx.showToast({
-				// 						title: '保存失败',
-				// 						icon: 'none'
-				// 					})
-				// 				}
-				// 			})
-				// 		}
-				// 	}
-				// })
-				 		}
+			}
 		})
 	},
+	/*
+	 * Description: 相册二次授权
+	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
+	 * Date: 2019/1/15
+	 */
+	handleSetting(e) {
+		if (!e.detail.authSetting['scope.writePhotosAlbum']) {
+			wx.showModal({
+				title: '警告',
+				content: '若不打开授权，则无法将图片保存在相册中！',
+				showCancel: false
+			})
+			this.setData({
+				saveImgBtnHidden: false,
+				openSettingBtnHidden: true
+			})
+		} else {
+			wx.showModal({
+				title: '提示',
+				content: '您已授权，赶紧将图片保存在相册中吧！',
+				showCancel: false
+			})
+			this.setData({
+				saveImgBtnHidden: true,
+				openSettingBtnHidden: false
+			})
+		}
+	},
+	/*
+	 * Description: 开放能力 跳转
+	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
+	 * Date: 2019/1/15
+	 */
 	viewOpen() {
 		app.utils.navigateTo('../webView/webView')
 	},

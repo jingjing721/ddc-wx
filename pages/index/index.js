@@ -25,7 +25,6 @@ Page({
 	 * Date: 2019/1/9
 	 */
 	bindNext(e) {
-		console.log(e, '点击授权')
 	  const openid = app.utils.getCache('openid');
 	  if (!openid) {
 	    app.utils.showToast('openid 不存在');

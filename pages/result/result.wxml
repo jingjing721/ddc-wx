@@ -4,14 +4,11 @@
   <view class="canvas-wrap">
     <view wx:if="{{!canvasBg}}" class="loading">餐桌绘制中,请稍后...</view>
     <image src="{{canvasBg}}" mode="widthFix"></image>
-    <button
-        wx:if="{{canvasBg}}"
-        type="primary"
-        bindtap="canvasSave"
-        class="nextStep"
-    >
-      点击保存
-    </button>
+    <button type='primary' class="nextStep"
+            wx:if="{{canvasBg && saveImgBtnHidden}}" bindtap="canvasSave" >点击保存</button>
+    <button type='primary' class="nextStep"
+            wx:if="{{canvasBg && openSettingBtnHidden}}" bindopensetting='handleSetting'
+            open-type="openSetting">去授权</button>
   </view>
   <view class="wx-code">
     <image src="{{codeBg}}" mode="widthFix"></image>
