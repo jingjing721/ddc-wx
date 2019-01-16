@@ -1,5 +1,6 @@
 // pages/bless/bless.js
 import * as utils from '../../utils/util.js'
+const app = getApp();
 
 Page({
 
@@ -11,15 +12,7 @@ Page({
 	  bg: '',
     blessText: '',
     currentIndex: -1,
-    blessList: [
-      '锦鲤附身',
-      '吃货这条道路上越走越远吃货这条道路上越走越远',
-      '阖家幸福',
-      '吃得饱睡得好',
-      '要啥来啥',
-      '发帖被加精',
-      '脱贫脱单不脱发'
-    ]
+    blessList: [],
   },
 
   /**
@@ -28,7 +21,26 @@ Page({
   onLoad: function (options) {
 	  this.data.blessData = JSON.parse(options.deskData);
 	  this.data.bg = options.bg;
+		this.getBless();
   },
+	/*
+	 * Description: 获取祝福语
+	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
+	 * Date: 2019/1/16
+	 */
+	getBless() {
+		const openid = app.utils.getCache('openid');
+		let data = {
+			wxType: 2,
+			openId: openid,
+			pageName: '祝福语'
+		}
+		app.http.$_post('getBless', data).then((xhr) => {
+			this.setData({
+				blessList: xhr.data
+			})
+		})
+	},
 	bindBless(e) {
     this.setData({
 	    blessText: e.detail.value,

@@ -17,7 +17,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
 	/*
 	 * Description: 授权获取用户信息
@@ -31,6 +30,21 @@ Page({
 	    return false
     }
     if (e.detail.userInfo) {
+	  	let userInfo = e.detail.userInfo
+	  	let data = {
+	  		wxType: 2,
+			  openId: openid, // 扫码自带微信openId 当值为1时,表示由公众号进入
+			  pageName: '扫码入口',
+			  nickName: userInfo.nickName,
+			  gender: userInfo.gender,
+			  language: userInfo.language,
+			  city	: userInfo.city,
+			  province	: userInfo.province,
+			  province	: userInfo.province,
+			  avatarUrl	: userInfo.avatarUrl,
+			  otherOpenId: ''
+		  }
+	    app.http.$_post('putUserInfo', data).then(() => {})
 	    app.utils.setCache('userInfo', e.detail.userInfo);
 	    app.utils.navigateTo('../desk/desk');
     }
