@@ -7,7 +7,7 @@ Page({
   data: {
 	  resultData: [],
     resultBg: '',
-	  resultText: '',
+	  resultText: '', // 祝福语
 	  logo: '../../images/logo.png',
 	  close: '../../images/close.png',
 	  code: '../../images/code.png',
@@ -47,11 +47,9 @@ Page({
 		}, () => {
 				app.utils.showToast('图片资源获取失败, 请返回上一页重新拉取资源');
 		})
-
-		// this.data.resultData.forEach((item) => {
-		// 	 this.data.resultArray.push(item.id)
-		// })
-			//console.log(this.data.resultArray.toString(), 'ctx');
+		this.data.resultData.forEach((item) => {
+			 this.data.resultArray.push(item.id)
+		})
   },
 	/*
 	 * Description: 绘制图片
@@ -163,7 +161,8 @@ Page({
 					wx.authorize({
 						scope: 'scope.writePhotosAlbum',
 						success() { // 第一次 直接授权保存
-							that.saveImageToPhotosAlbum()
+							that.subSave()
+							that.saveImageToPhotosAlbum();
 						},
 						fail() {
 							that.setData({
@@ -173,10 +172,27 @@ Page({
 						}
 					})
 				} else { // 拒绝授权之后 在授权执行保存
+					that.subSave();
 					that.saveImageToPhotosAlbum();
 				}
 			}
 		})
+	},
+	/*
+	 * Description: 提交保存数据
+	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
+	 * Date: 2019/1/16
+	 */
+	subSave() {
+		const openid = app.utils.getCache('openid');
+		let data = {
+			wxType: 2,
+			openId: openid,
+			pageName: '用户提交',
+			bless: this.data.resultText,
+			ids: this.data.resultArray.toString()
+		}
+		app.http.$_post('clickNext', data).then(() => {});
 	},
 	/*
 	 * Description: 保存到相册

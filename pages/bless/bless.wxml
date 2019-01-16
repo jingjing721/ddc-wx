@@ -1,8 +1,8 @@
 <!--pages/bless/bless.wxml-->
 <view>
   <view class="bless_title">最后许个愿吧</view>
-  <view class="bless_list bless_list{{index}} {{currentIndex == index ? 'active':''}} " wx:for="{{blessList}}" wx:key="{{index}}" data-text="{{item}}" data-index="{{index}}" bindtap="bindList">
-  {{item}}
+  <view class="bless_list bless_list{{index}} {{currentIndex == index ? 'active':''}} " wx:for="{{blessList}}" wx:key="{{index}}" data-text="{{item.blessContext}}" data-index="{{index}}" bindtap="bindList">
+  {{item.blessContext}}
    <view class="selected_icon"></view>
   </view>
 
