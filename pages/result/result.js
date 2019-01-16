@@ -5,15 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-	  resultData: [],
-    resultBg: '',
+	  resultData: [], // 数据源
+    resultBg: '', // 背景桌
 	  resultText: '', // 祝福语
 	  logo: '../../images/logo.png',
 	  close: '../../images/close.png',
 	  code: '../../images/code.png',
 	  resultArray: [],
 	  canvasBg: '', // 图片路径
-	  codeBg: '../../images/codeBg.png',
 	  saveImgBtnHidden: true, // 保存相册
 	  openSettingBtnHidden: false, // 去授权
   },
@@ -36,7 +35,7 @@ Page({
 		Promise.all([this.getImageInfoBg()].concat(this.getImageInfo())).then((sucRes) => {
 			sucRes.shift()  // 只需要 getImageInfo 中的数据
 			this.data.resultData.forEach((item, index) => { // 拉取微信服务器数据之后重新复制 开始绘制
-				item.src = sucRes[index].path
+				item.foodImg = sucRes[index].path
 			})
 			this.drawImg(ctx);
 			this.drawText(ctx);
@@ -66,7 +65,7 @@ Page({
 		ctx.drawImage(this.data.code, 270, 330, 100, 100) // 绘制code
 		this.data.resultData.sort(this.sortNumber('zindex')) // 排序之后绘制层级
 		this.data.resultData.forEach((item) => { // 绘制 手动添加的菜品
-			ctx.drawImage(item.src, item.x, item.y + 35, 74, 74);
+			ctx.drawImage(item.foodImg, item.x, item.y + 35, 74, 74);
 		})
 	},
 	/*
@@ -95,7 +94,7 @@ Page({
 	getImagePromiseArr(item) {
 	 	return new Promise((resolve, reject) => {
 		  wx.getImageInfo({
-			  src: item.src, // 服务器返回的带参数的小程序码地址
+			  src: item.foodImg, // 服务器返回的带参数的小程序码地址
 			  success: resolve,
 			  fail: function () {
 				  app.utils.showToast('图片资源获取失败');

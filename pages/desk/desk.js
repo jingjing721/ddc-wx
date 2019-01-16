@@ -3,7 +3,7 @@
 const app = getApp()
 Page({
   data: {
-      viewData: [],
+  	viewData: [],
 	  scaleSrc: [],
 	  maxZnum: 0,
 	  bgUrl: '',
@@ -16,43 +16,17 @@ Page({
 	 * Date: 2019/1/5
 	 */
   onLoad: function () {
-  	
-	let self = this;
   	const openid = app.utils.getCache('openid');
     app.http.$_post('getCookBook',{
         wxType: '2',
         openId: openid,
         pageName: '菜谱',
-	}).then(function (res) {
-		if(res && res.code == '0000'){
-			let viewDataList = self.data.viewData;
-           res.data.map(function (item, index) {
-               viewDataList.push(item);
-           });
-           self.setData({
-			   viewData: viewDataList,
-			   listData: viewDataList[0].dishes,
-               bgUrl: viewDataList[0].dishes[0].foodImg,
-		   })
-        }else if(res && res.code == '2000'){
-            wx.showToast({
-                title: '未查到记录',
-                icon: 'none',
-                duration: 2000
-            })
-		}else{
-            wx.showToast({
-                title: '服务器错误',
-                icon: 'none',
-                duration: 2000
-            })
-		}
-    }).catch(function (err) {
-        wx.showToast({
-            title: '服务器错误',
-            icon: 'none',
-            duration: 2000
-        })
+	}).then((xhr) => {
+		this.setData({
+			viewData: xhr.data,
+			listData: xhr.data[0].dishes,
+			bgUrl: xhr.data[0].dishes[0].foodImg
+		})
     });
   },
 	/*
