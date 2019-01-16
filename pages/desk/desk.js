@@ -3,140 +3,9 @@
 const app = getApp()
 Page({
   data: {
-    viewData: [{
-		    title: '肉类',
-		    classID: 2,
-		    content: [
-		    	{
-            src: 'https://mcn-video.daydaycook.com.cn/6b47c00d05e443f095f2eca46f032ddb.png',
-            id: 1,
-		      },
-			    {
-				    src: 'https://mcn-video.daydaycook.com.cn/1a85ff5460f34300b9afe319a36e1dc5.png',
-				    id: 2,
-			    },
-			    {
-				    src: 'https://mcn-video.daydaycook.com.cn/6e956c8bc1f04dfbbeffc0a9acb463c2.png',
-				    id: 3,
-          },
-			    {
-            src: 'https://mcn-video.daydaycook.com.cn/b187cca134ea419ebd67f3df2a0fee44.png',
-            id: 4,
-          },
-          {
-            src: 'https://mcn-video.daydaycook.com.cn/da724a62a7b240949a16c407b38faef6.png',
-            id: 5,
-          },
-			    {
-				    src: 'https://mcn-video.daydaycook.com.cn/6b47c00d05e443f095f2eca46f032ddb.png',
-				    id: 1,
-			    },
-			    {
-				    src: 'https://mcn-video.daydaycook.com.cn/1a85ff5460f34300b9afe319a36e1dc5.png',
-				    id: 2,
-			    },
-			    {
-				    src: 'https://mcn-video.daydaycook.com.cn/6e956c8bc1f04dfbbeffc0a9acb463c2.png',
-				    id: 3,
-			    },
-			    {
-				    src: 'https://mcn-video.daydaycook.com.cn/b187cca134ea419ebd67f3df2a0fee44.png',
-				    id: 4,
-			    },
-			    {
-				    src: 'https://mcn-video.daydaycook.com.cn/da724a62a7b240949a16c407b38faef6.png',
-				    id: 5,
-			    },
-          {
-            src: '../../images/3.jpg',
-            id: 10,
-          },
-          {
-            src: '../../images/2.jpg',
-            id: 11,
-          },
-          {
-            src: '../../images/1.jpg',
-            id: 12,
-          },
-			    {
-				    src: 'https://mcn-video.daydaycook.com.cn/68e366d9c85044c3b2f640bed5a62345.png',
-				    id: 6,
-			    },
-			    {
-				    src: 'https://mcn-video.daydaycook.com.cn/d4759738f014494cb6251d6f1c044bb8.png',
-				    id: 7,
-			    },
-			    {
-				    src: 'https://mcn-video.daydaycook.com.cn/68e366d9c85044c3b2f640bed5a62345.png',
-				    id: 8,
-			    },
-			    {
-				    src: 'https://mcn-video.daydaycook.com.cn/ae5f074b57094d62b42f445887e8caf3.png',
-				    id: 9,
-			    }]
-	    },
-	    {
-		    title: '水产',
-		    classID: 3,
-		    content: [{
-            src: '../../images/1.jpg',
-            id: 1
-          },
-			    {
-				    src: '../../images/3.jpg',
-				    id: 2
-			    },
-			    {
-				    src: '../../images/2.jpg',
-				    id: 3
-			    }]
-	    },
-	    {
-		    title: '肉禽品蛋',
-		    classID: 3,
-		    content: [{
-			    src: '../../images/1.jpg',
-			    id: 1
-		    }]
-	    },
-	    {
-		    title: '海鲜水产',
-		    classID: 3,
-		    content: [{
-			    src: '../../images/1.jpg',
-			    id: 1
-		    }]
-	    },
-	    {
-		    title: '蔬菜水果',
-		    classID: 3,
-		    content: [{
-			    src: '../../images/1.jpg',
-			    id: 1
-		    }]
-	    },
-	    {
-		    title: '主食甜品',
-		    classID: 3,
-		    content: [{
-			    src: '../../images/1.jpg',
-			    id: 1
-		    }]
-	    },
-
-
-	    {
-		    title: '主食甜品',
-		    classID: 3,
-		    content: [{
-			    src: '../../images/1.jpg',
-			    id: 1
-		    }]
-	    }
-    ],
+      viewData: [],
 	  scaleSrc: [],
-    maxZnum: 0,
+	  maxZnum: 0,
 	  bgUrl: '',
 	  listData: [],
 	  isActive: 0,
@@ -147,12 +16,44 @@ Page({
 	 * Date: 2019/1/5
 	 */
   onLoad: function () {
-  	this.data.viewData.unshift(app.dict.bg)
-    this.setData({
-      listData: this.data.viewData[0].content,
-	    bgUrl: this.data.viewData[0].content[0].src,
-	    viewData: this.data.viewData
-    })
+  	
+	let self = this;
+  	const openid = app.utils.getCache('openid');
+    app.http.$_post('getCookBook',{
+        wxType: '2',
+        openId: openid,
+        pageName: '菜谱',
+	}).then(function (res) {
+		if(res && res.code == '0000'){
+			let viewDataList = self.data.viewData;
+           res.data.map(function (item, index) {
+               viewDataList.push(item);
+           });
+           self.setData({
+			   viewData: viewDataList,
+			   listData: viewDataList[0].dishes,
+               bgUrl: viewDataList[0].dishes[0].foodImg,
+		   })
+        }else if(res && res.code == '2000'){
+            wx.showToast({
+                title: '未查到记录',
+                icon: 'none',
+                duration: 2000
+            })
+		}else{
+            wx.showToast({
+                title: '服务器错误',
+                icon: 'none',
+                duration: 2000
+            })
+		}
+    }).catch(function (err) {
+        wx.showToast({
+            title: '服务器错误',
+            icon: 'none',
+            duration: 2000
+        })
+    });
   },
 	/*
 	 * Description:  添加菜品
@@ -160,20 +61,20 @@ Page({
 	 * Date: 2019/1/5
 	 */
 	bindAdd(e) {
-		if (e.currentTarget.dataset.cid == 1) {
+		if (e.currentTarget.dataset.cid == 'canzhuobeijing') {
 			this.setData({
-				bgUrl: this.data.listData[e.currentTarget.dataset.index].src
+				bgUrl: this.data.listData[e.currentTarget.dataset.index].foodImg
 			})
 			return false
 		}
-    let src = this.data.listData[e.currentTarget.dataset.index];
+    	let src = this.data.listData[e.currentTarget.dataset.index];
         src.x = 150 + this.rnd(0, 20);
         src.y = 150 + this.rnd(10, 30);
         src.zindex = this.data.maxZnum++
         this.setData({
           scaleSrc: app.utils.deepCopy(this.data.scaleSrc.concat(src))
         })
-  },
+ 	 },
 	/*
 	 * Description: 随机一个范围
 	 * Types：n -> number; m -> number
@@ -190,11 +91,11 @@ Page({
 	 * Date: 2019/1/5
 	 */
 	bindZindex(e) {
-    this.data.scaleSrc[e.currentTarget.dataset.index].zindex = this.data.maxZnum ++
-    this.setData({
-			scaleSrc: this.data.scaleSrc,
-    })
-  },
+		this.data.scaleSrc[e.currentTarget.dataset.index].zindex = this.data.maxZnum ++
+		this.setData({
+				scaleSrc: this.data.scaleSrc,
+		})
+	  },
 	/*
 	 * Description: 删除菜品
 	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
@@ -205,7 +106,7 @@ Page({
 		this.setData({
 			scaleSrc: app.utils.deepCopy(this.data.scaleSrc),
 		})
-  },
+ 	 },
 	/*
 	 * Description: 记录移动位置 X轴、Y轴
 	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
@@ -215,11 +116,11 @@ Page({
      if (e.detail.source === "touch") {
 		    this.data.scaleSrc[e.currentTarget.dataset.index].x = e.detail.x
 		    this.data.scaleSrc[e.currentTarget.dataset.index].y = e.detail.y
-        this.setData({
-          scaleSrc: this.data.scaleSrc
-        })
-     }
-  },
+			this.setData({
+			  scaleSrc: this.data.scaleSrc
+			})
+		 }
+	  },
 	/*
 	 * Description: 显示分类数据
 	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
@@ -227,10 +128,10 @@ Page({
 	 */
 	bindClass(e) {
 	  this.setData({
-		  isActive: e.currentTarget.dataset.index,
-      listData: this.data.viewData[e.currentTarget.dataset.index].content
-    })
-  },
+	  	isActive: e.currentTarget.dataset.index,
+      	listData: this.data.viewData[e.currentTarget.dataset.index].dishes,
+    	})
+  	},
 	/*
 	 * Description: 下一步
 	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
