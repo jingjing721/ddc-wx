@@ -13,8 +13,8 @@
   width: 100%;
 }
 movable-view{
-  width: 160rpx;
-  height: 160rpx;
+  width: 120rpx;
+  height: 120rpx;
 }
 .scroll-view_h {
   width: 100%;
@@ -40,9 +40,9 @@ movable-view{
 }
 .view-img {
   display: inline-block;
-  width: 120rpx;
-  height: 120rpx;
-  margin: 12rpx;
+  width: 151rpx;
+  height: 151rpx;
+  margin: 17rpx;
 }
 .scale-img {
   width: 100%;
@@ -73,7 +73,7 @@ movable-view{
 }
 .scroll-view_cont .left,
 .scroll-view_cont .right{
-  height: 144rpx;
+  height: 186rpx;
 }
 .scroll-view_cont image{
   border-radius:16px;

@@ -6,7 +6,7 @@
   box-shadow: 5rpx 5rpx 10rpx #FFBE67;
   border-radius:50px;
   border: none;
-  margin-top: 50rpx;
+  margin-top: 20rpx;
   font-size: 40rpx;
   color: #ffffff;
   margin-bottom: 26rpx;
