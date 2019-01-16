@@ -67,9 +67,9 @@ Page({
 	 */
 	drawImg(ctx) {
 		console.log(this.data.resultData, 'ca')
-		ctx.drawImage(this.data.resultBg, this.remSize(16), this.remSize(30), this.remSize(310), this.remSize(300)); // 绘制背景图
+		ctx.drawImage(this.data.resultBg, this.remSize(16), this.remSize(40), this.remSize(310), this.remSize(300)); // 绘制背景图
 		ctx.drawImage(this.data.logo, this.remSize(80), this.remSize(8), this.remSize(18), this.remSize(18)) // 绘制logo
-		ctx.drawImage(this.data.close, this.remSize(106), this.remSize(12), this.remSize(10), this.remSize(10)) // 绘制close
+		ctx.drawImage(this.data.close, this.remSize(102), this.remSize(12), this.remSize(10), this.remSize(10)) // 绘制close
 		this.data.resultData.sort(this.sortNumber('zindex')) // 排序之后绘制层级
 		this.data.resultData.forEach((item) => { // 绘制 手动添加的菜品
 			ctx.drawImage(item.src, item.x, item.y, this.remSize(100), this.remSize(100));
@@ -82,11 +82,15 @@ Page({
 	 * Date: 2019/1/12
 	 */
 	drawText(ctx) {
+		console.log(ctx.measureText(this.data.resultText).width, wx.getSystemInfoSync())
 		let userInfo = app.utils.getCache('userInfo');
 		ctx.setFontSize(14);
 		ctx.setFillStyle("#000");
-		ctx.fillText(this.data.resultText, 50, 280); // 祝福语
-		ctx.fillText(`${userInfo.nickName}的新年餐桌`, this.remSize(128),this.remSize(22))
+		ctx.fillText(`${userInfo.nickName}的新年餐桌`, this.remSize(120),this.remSize(22))
+		ctx.setTextAlign('center');
+		ctx.setFillStyle("#fb7f59");
+		ctx.fillText(this.data.resultText, wx.getSystemInfoSync().windowWidth / 2, 60)
+	//	ctx.fillText(this.data.resultText, 50, 280); // 祝福语
 	},
 	/*
 	 * Description: 对网络图片进行遍历下载之后在绘制canvas
