@@ -1,6 +1,7 @@
 <!--index.wxml-->
 <view class="container">
-  <movable-area class="movable-wrap" style="background: url({{bgUrl}}); background-size: 100% 100%">
+  <movable-area class="movable-wrap" >
+    <image src="{{bgUrl}}" class="mova-bg" mode="widthFix"></image>
     <movable-view
         bindchange="onChange"
         direction="all"

@@ -8,41 +8,45 @@ Page({
 		    classID: 2,
 		    content: [
 		    	{
-            src: 'https://mcn-video.daydaycook.com.cn/d4759738f014494cb6251d6f1c044bb8.png',
+            src: 'https://mcn-video.daydaycook.com.cn/6b47c00d05e443f095f2eca46f032ddb.png',
             id: 1,
 		      },
 			    {
-				    src: 'https://mcn-video.daydaycook.com.cn/ae5f074b57094d62b42f445887e8caf3.png',
+				    src: 'https://mcn-video.daydaycook.com.cn/1a85ff5460f34300b9afe319a36e1dc5.png',
 				    id: 2,
 			    },
 			    {
-				    src: 'https://mcn-video.daydaycook.com.cn/68e366d9c85044c3b2f640bed5a62345.png',
+				    src: 'https://mcn-video.daydaycook.com.cn/6e956c8bc1f04dfbbeffc0a9acb463c2.png',
 				    id: 3,
           },
 			    {
-            src: 'https://mcn-video.daydaycook.com.cn/d4759738f014494cb6251d6f1c044bb8.png',
+            src: 'https://mcn-video.daydaycook.com.cn/b187cca134ea419ebd67f3df2a0fee44.png',
             id: 4,
           },
           {
-            src: 'https://mcn-video.daydaycook.com.cn/ae5f074b57094d62b42f445887e8caf3.png',
+            src: 'https://mcn-video.daydaycook.com.cn/da724a62a7b240949a16c407b38faef6.png',
             id: 5,
           },
-          {
-            src: 'https://mcn-video.daydaycook.com.cn/68e366d9c85044c3b2f640bed5a62345.png',
-            id: 6,
-          },
-          {
-            src: 'https://mcn-video.daydaycook.com.cn/d4759738f014494cb6251d6f1c044bb8.png',
-            id: 7,
-          },
-          {
-            src: 'https://mcn-video.daydaycook.com.cn/68e366d9c85044c3b2f640bed5a62345.png',
-            id: 8,
-          },
-          {
-            src: 'https://mcn-video.daydaycook.com.cn/ae5f074b57094d62b42f445887e8caf3.png',
-            id: 9,
-          },
+			    {
+				    src: 'https://mcn-video.daydaycook.com.cn/6b47c00d05e443f095f2eca46f032ddb.png',
+				    id: 1,
+			    },
+			    {
+				    src: 'https://mcn-video.daydaycook.com.cn/1a85ff5460f34300b9afe319a36e1dc5.png',
+				    id: 2,
+			    },
+			    {
+				    src: 'https://mcn-video.daydaycook.com.cn/6e956c8bc1f04dfbbeffc0a9acb463c2.png',
+				    id: 3,
+			    },
+			    {
+				    src: 'https://mcn-video.daydaycook.com.cn/b187cca134ea419ebd67f3df2a0fee44.png',
+				    id: 4,
+			    },
+			    {
+				    src: 'https://mcn-video.daydaycook.com.cn/da724a62a7b240949a16c407b38faef6.png',
+				    id: 5,
+			    },
           {
             src: '../../images/3.jpg',
             id: 10,
@@ -163,13 +167,23 @@ Page({
 			return false
 		}
     let src = this.data.listData[e.currentTarget.dataset.index];
-        src.x = 150;
-        src.y = 150;
+        src.x = 150 + this.rnd(0, 20);
+        src.y = 150 + this.rnd(10, 30);
         src.zindex = this.data.maxZnum++
         this.setData({
           scaleSrc: app.utils.deepCopy(this.data.scaleSrc.concat(src))
         })
   },
+	/*
+	 * Description: 随机一个范围
+	 * Types：n -> number; m -> number
+	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
+	 * Date: 2019/1/14
+	 */
+	rnd(n, m){
+		let random = Math.floor(Math.random()*(m-n+1)+n);
+		return random;
+	},
 	/*
 	 * Description: 层级控制
 	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
