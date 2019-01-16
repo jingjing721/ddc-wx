@@ -16,7 +16,7 @@
     >
       <image
           class="scale-img"
-          src="{{item.src}}"
+          src="{{item.foodImg}}"
       ></image>
       <view class="close" catchtap="bindClose" data-index="{{index}}">×</view>
     </movable-view>
@@ -24,15 +24,15 @@
   <view class="scroll-bg">
     <scroll-view class="scroll-view_h" scroll-x>
       <view class="scroll-view_tab">
-        <view wx:for="{{viewData}}" wx:key="{{item.classID}}" data-index="{{index}}" bindtap="bindClass" class="view-class active-{{isActive == index}}">{{item.title}}</view>
+        <view wx:for="{{viewData}}" wx:key="{{index}}" data-index="{{index}}" bindtap="bindClass" class="view-class active-{{isActive == index}}">{{item.foodStyleName}}</view>
       </view>
     </scroll-view>
     <scroll-view class="scroll-view_cont" scroll-x style="width: 100%; white-space: nowrap; display: flex">
       <view class="left">
-          <image wx:for="{{listData}}" wx:if="{{index%2 == 0}}" src="{{item.src}}" wx:key="{{item.id}}" class="view-img" data-index="{{index}}" data-cid="{{item.cid}}" bindtap="bindAdd"></image>
+          <image wx:for="{{listData}}" wx:if="{{index%2 == 0}}" src="{{item.foodImg}}" wx:key="{{item.id}}" class="view-img" data-index="{{index}}" data-cid="{{item.foodStyle}}" bindtap="bindAdd"></image>
       </view>
       <view class="right">
-          <image wx:for="{{listData}}" wx:if="{{index%2 == 1}}" src="{{item.src}}" wx:key="{{item.id}}" class="view-img" data-index="{{index}}" data-cid="{{item.cid}}" bindtap="bindAdd"></image>
+          <image wx:for="{{listData}}" wx:if="{{index%2 == 1}}" src="{{item.foodImg}}" wx:key="{{item.id}}" class="view-img" data-index="{{index}}" data-cid="{{item.foodStyle}}" bindtap="bindAdd"></image>
       </view>
     </scroll-view>
   </view>
