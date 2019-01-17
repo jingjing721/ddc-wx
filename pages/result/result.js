@@ -11,7 +11,6 @@ Page({
 	  logo: '../../images/logo.png',
 	  close: '../../images/close.png',
 	  code: '../../images/code.png',
-	  resultArray: [],
 	  canvasBg: '', // 图片路径
 	  saveImgBtnHidden: true, // 保存相册
 	  openSettingBtnHidden: false, // 去授权
@@ -45,9 +44,6 @@ Page({
 			}, 500)
 		}, () => {
 				app.utils.showToast('图片资源获取失败, 请返回上一页重新拉取资源');
-		})
-		this.data.resultData.forEach((item) => {
-			 this.data.resultArray.push(item.id)
 		})
   },
 	/*
@@ -97,7 +93,7 @@ Page({
 			  src: item.foodImg, // 服务器返回的带参数的小程序码地址
 			  success: resolve,
 			  fail: function () {
-				  app.utils.showToast('图片资源获取失败');
+				  app.utils.showToast('图片资源获取失败, 请返回上一页重新拉取资源');
 			  }
 		  })
 	  })
@@ -189,7 +185,7 @@ Page({
 			openId: openid,
 			pageName: '用户提交',
 			bless: this.data.resultText,
-			ids: this.data.resultArray.toString()
+			ids: app.utils.dishId(this.data.resultData)
 		}
 		app.http.$_post('clickNext', data).then(() => {});
 	},
@@ -307,7 +303,27 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage () {
-
-  }
+  onShareAppMessage(options){
+	  let that = this;
+	  let shareObj = {
+		  title: "拼桌菜", // 默认是小程序的名称
+		  path: '/pages/index/index',  // 默认是当前页面，必须是以‘/’开头的完整路径
+		  imageUrl: '',  //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
+		  success (res) {// 转发成功之后的回调
+			  if (res.errMsg == 'shareAppMessage:ok') {}
+		  },
+		  fail () {// 转发失败之后的回调
+			  if (res.errMsg == 'shareAppMessage:fail cancel') {// 用户取消转发
+			  }else if (res.errMsg == 'shareAppMessage:fail') {// 转发失败，其中 detail message 为详细失败信息
+			  }
+		  },
+		  complete(){// 转发结束之后的回调（转发成不成功都会执行）
+		  }
+	  }
+	  // 来自页面内的按钮的转发
+	  if (options.from == 'button') {
+		  // var dataid = options.target.dataset; //data-id=shareBtn
+	  }
+	  return shareObj;
+  },
 })

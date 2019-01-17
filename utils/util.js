@@ -59,10 +59,25 @@ export function setCache(key, data) {
 export function getCache(key) {
 	return wx.getStorageSync(key)
 }
+
+/*
+ * Description: 数据整理获取菜品id. data: 菜品数据
+ * Types： data -> Object
+ * Author: yanlichen <lichen.yan@daydaycook.com.cn>
+ * Date: 2019/1/16
+ */
+export function dishId(data) {
+	let resultArray = [];
+	data && data.forEach((item) => {
+		resultArray.push(item.id)
+	})
+	return resultArray.toString();
+}
 export default {
 	navigateTo,
 	showToast,
 	deepCopy,
 	setCache,
-	getCache
+	getCache,
+	dishId
 }

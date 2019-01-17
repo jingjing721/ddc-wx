@@ -1,7 +1,5 @@
 // pages/bless/bless.js
-import * as utils from '../../utils/util.js'
 const app = getApp();
-
 Page({
 
   /**
@@ -29,6 +27,9 @@ Page({
 	 * Date: 2019/1/16
 	 */
 	getBless() {
+		wx.showLoading({
+			title: '数据加载中...',
+		})
 		const openid = app.utils.getCache('openid');
 		let data = {
 			wxType: 2,
@@ -39,6 +40,7 @@ Page({
 			this.setData({
 				blessList: xhr.data
 			})
+			wx.hideLoading();
 		})
 	},
 	bindBless(e) {
@@ -59,15 +61,32 @@ Page({
    */
   bindNext() {
     if (this.data.blessText == '' || this.data.blessText == null) {
-	    utils.showToast('请填写祝福语')
+	    app.utils.showToast('请填写祝福语')
       return false
     }
-    utils.navigateTo('../result/result', {
+    this.subSave();
+	  app.utils.navigateTo('../result/result', {
 	    resultData: JSON.stringify(this.data.blessData),
 	    bg: this.data.bg,
 	    blessText: this.data.blessText
     })
   },
+	/*
+	 * Description: 提交保存数据
+	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
+	 * Date: 2019/1/16
+	 */
+	subSave() {
+		const openid = app.utils.getCache('openid');
+		let data = {
+			wxType: 2,
+			openId: openid,
+			pageName: '祝福语',
+			bless: this.data.blessText,
+			ids: app.utils.dishId(this.data.blessData)
+		}
+		app.http.$_post('clickNext', data).then(() => {});
+	},
   onReady: function () {
 
   },

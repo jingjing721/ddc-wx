@@ -1,11 +1,9 @@
 // pages/index/index.js
 import * as http from '../../utils/http.js'
 import * as utils from '../../utils/util.js'
-import * as dict from '../../utils/dict.js'
 const app = getApp();
       app.http = http
       app.utils = utils
-			app.dict = dict
 Page({
 
   /**

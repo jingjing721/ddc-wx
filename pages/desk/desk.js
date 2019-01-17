@@ -3,11 +3,11 @@
 const app = getApp()
 Page({
   data: {
-  	viewData: [],
-	  scaleSrc: [],
+  	viewData: [], // 菜品分类
+	  scaleSrc: [], // 选中菜品
 	  maxZnum: 0,
 	  bgUrl: '',
-	  listData: [],
+	  listData: [], // 单个菜品数组
 	  isActive: 0,
   },
 	/*
@@ -16,19 +16,32 @@ Page({
 	 * Date: 2019/1/5
 	 */
   onLoad: function () {
-  	const openid = app.utils.getCache('openid');
-    app.http.$_post('getCookBook',{
-        wxType: '2',
-        openId: openid,
-        pageName: '菜谱',
-	}).then((xhr) => {
-		this.setData({
-			viewData: xhr.data,
-			listData: xhr.data[0].dishes,
-			bgUrl: xhr.data[0].dishes[0].foodImg
-		})
-    });
+  	this.getDesk();
   },
+	/*
+	 * Description: 获取菜品
+	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
+	 * Date: 2019/1/16
+	 */
+	getDesk() {
+		wx.showLoading({
+			title: '数据加载中...',
+		})
+		const openid = app.utils.getCache('openid');
+		let data = {
+			wxType: '2',
+			openId: openid,
+			pageName: '菜谱'
+		}
+		app.http.$_post('getCookBook', data).then((xhr) => {
+			this.setData({
+				viewData: xhr.data,
+				listData: xhr.data[0].dishes,
+				bgUrl: xhr.data[0].dishes[0].foodImg
+			})
+			wx.hideLoading();
+		});
+	},
 	/*
 	 * Description:  添加菜品
 	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
@@ -116,9 +129,25 @@ Page({
 			app.utils.showToast('必须添加一个菜品');
 			return false
 		}
+		this.subSave();
 		app.utils.navigateTo('../bless/bless', {
 			deskData: JSON.stringify(this.data.scaleSrc),
 			bg: this.data.bgUrl
 		})
-	}
+	},
+	/*
+	 * Description: 提交保存数据
+	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
+	 * Date: 2019/1/16
+	 */
+	subSave() {
+		const openid = app.utils.getCache('openid');
+		let data = {
+			wxType: 2,
+			openId: openid,
+			pageName: '菜谱',
+			ids: app.utils.dishId(this.data.scaleSrc)
+		}
+		app.http.$_post('clickNext', data).then(() => {});
+	},
 })

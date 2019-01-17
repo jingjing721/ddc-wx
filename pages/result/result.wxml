@@ -1,5 +1,6 @@
 <!--pages/result.wxml-->
 <view class="result-wrap">
+  <button class="share-btn" data-id="shareBtn" open-type="share">邀请朋友参加</button>
   <canvas style="width: 100%; height: 450px; position:fixed; left: -9999px; overflow:hidden;" canvas-id="canvasId"></canvas>
   <view class="canvas-wrap">
     <view wx:if="{{!canvasBg}}" class="loading">餐桌绘制中,请稍后...</view>
@@ -11,6 +12,5 @@
             open-type="openSetting">去授权</button>
   </view>
   <view class="wx-code">
-    <image src="{{codeBg}}" mode="widthFix"></image>
   </view>
 </view>
