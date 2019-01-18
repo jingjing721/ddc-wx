@@ -9,6 +9,7 @@ Page({
 	  bgUrl: '',
 	  listData: [], // 单个菜品数组
 	  isActive: 0,
+      isBottonShow: false,  //下一步按钮默认隐藏
   },
 	/*
 	 * Description: 初始化第一分类数据
@@ -34,7 +35,8 @@ Page({
 			this.setData({
 				viewData: xhr.data,
 				listData: xhr.data[0].dishes,
-				bgUrl: xhr.data[0].dishes[0].foodImg
+				bgUrl: xhr.data[0].dishes[0].foodImg,
+                isBottonShow: true,
 			})
 			wx.hideLoading();
 		});

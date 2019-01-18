@@ -11,7 +11,7 @@ Page({
       blessText: '',
       currentIndex: -1,
       blessList: [],
-      isBottomShow: false,
+      isBottomShow: false,  //底部操作默认隐藏
   },
 
   /**
