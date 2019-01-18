@@ -144,4 +144,12 @@ Page({
 		}
 		app.http.$_post('clickNext', data).then(() => {});
 	},
+    /*
+     * Description: 禁止下拉刷新页面
+     * Author: wangjingjing <jingjing.wang@daydaycook.com.cn>
+     * Date: 2019/1/18
+     */
+    onPullDownRefresh() {
+        wx.stopPullDownRefresh();
+    }
 })

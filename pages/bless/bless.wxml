@@ -6,7 +6,7 @@
    <view class="selected_icon"></view>
   </view>
 
-  <view class="bless_bottom">
+  <view class="bless_bottom" wx:if="{{isBottomShow}}">
     <input class="bless_input" placeholder-class="placeholder_input" bindinput="bindBless" placeholder="您也能在这里写下您的新年祝福哦！" value="{{blessText}}" />
     <button
         type="primary"
