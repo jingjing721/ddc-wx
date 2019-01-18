@@ -43,8 +43,6 @@ Page({
 			wx.hideLoading();
 			this.data.resultBg = sucRes[0].path;
 			this.data.code = sucRes[1].path;
-			console.log(sucRes)
-			//return false
 			sucRes.splice(0,2)
 			this.data.resultData.forEach((item, index) => { // 拉取微信服务器数据之后重新复制 开始绘制
 				item.foodImg = sucRes[index].path
@@ -67,18 +65,18 @@ Page({
 	 */
 	drawImg(ctx) {
 		ctx.setFillStyle('#fff')
-		ctx.fillRect(0, 0, 375, 450)
-		ctx.drawImage(this.data.resultBg, 0, 35, 375, 334); // 绘制背景图
+		ctx.fillRect(0, 0, this.remSize(375), this.remSize(500))
+		ctx.drawImage(this.data.resultBg, 0, 35, this.remSize(375), this.remSize(334)); // 绘制背景图
 		ctx.save();
 		ctx.beginPath(); //开始绘制
 		//先画个圆
-		ctx.arc(100 / 2 + 270, 100 / 2 + 330, 100 / 2, 0, Math.PI * 2);
+		ctx.arc(this.remSize(100) / 2 + this.remSize(265), this.remSize(100) / 2 + this.remSize(330), this.remSize(100) / 2, 0, Math.PI * 2);
 		ctx.clip();//画好了圆 剪切
-		ctx.drawImage(this.data.code, 270, 330, 100, 100);  //网络图片需要先上传到微信服务器再进行渲染
+		ctx.drawImage(this.data.code, this.remSize(265), this.remSize(330), this.remSize(100), this.remSize(100));
 		ctx.restore();
 		this.data.resultData.sort(this.sortNumber('zindex')) // 排序之后绘制层级
 		this.data.resultData.forEach((item) => { // 绘制 手动添加的菜品
-			ctx.drawImage(item.foodImg, item.x, item.y + 35, 60, 60);
+			ctx.drawImage(item.foodImg, item.x, item.y + 35, this.remSize(60), this.remSize(60));
 		})
 	},
 	/*
@@ -97,8 +95,18 @@ Page({
 		ctx.setFillStyle("#fb7f59");
 		ctx.fillText(this.data.resultText, wx.getSystemInfoSync().windowWidth / 2, 60); // 祝福居中
 		ctx.setFillStyle("#000");
-		ctx.fillText('扫码搭配你的新年餐桌', 170, 400);
-		ctx.fillText('讲述你的新年故事', 185, 420);
+		ctx.fillText('扫码搭配你的新年餐桌', this.remSize(170), this.remSize(400));
+		ctx.fillText('讲述你的新年故事', this.remSize(185), this.remSize(420));
+	},
+	/*
+		*Description: 按照375大小转换px 计算不同屏幕设备大小转换
+		*
+		* Author: yanlichen <lichen.yan@daydaycook.com.cn>
+		* Date: 2019/1/7
+	*/
+	remSize (num) {
+		let scale = wx.getSystemInfoSync().windowWidth / 375
+		return num * scale
 	},
 	/*
 	 * Description: 对网络图片进行下载之后在绘制canvas imgSrc:图片路径地址
@@ -107,7 +115,6 @@ Page({
 	 * Date: 2019/1/12
 	 */
 	getImagePromiseArr(imgSrc) {
-		console.log(imgSrc, 'imgSrc')
 	 	return new Promise((resolve, reject) => {
 		  wx.getImageInfo({
 			  src: imgSrc, // 服务器返回的带参数的小程序码地址
@@ -215,7 +222,7 @@ Page({
 			x: 0,
 			y: 0,
 			width: 375,
-			height: 450,
+			height: 500,
 			fileType: 'jpg',
 			canvasId: 'canvasId',
 			success(res) {
@@ -311,6 +318,7 @@ Page({
    */
   onShareAppMessage(options){
 	  let that = this;
+	  let uid =
 	  let shareObj = {
 		  title: "拼桌菜", // 默认是小程序的名称
 		  path: '/pages/index/index',  // 默认是当前页面，必须是以‘/’开头的完整路径

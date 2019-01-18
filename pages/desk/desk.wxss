@@ -10,7 +10,8 @@
   margin-bottom: 12rpx;
 }
 .mova-bg {
-  width: 100%;
+  width: 750rpx;
+  height: 686rpx;
 }
 movable-view{
   width: 120rpx;
