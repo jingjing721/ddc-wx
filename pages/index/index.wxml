@@ -1,7 +1,9 @@
 <!--pages/index/index.wxml-->
-<view>
-  <text>晒一晒新年的餐桌</text>
-  <button open-type="getUserInfo" type="primary" lang="zh_CN" bindgetuserinfo="bindNext">
-    挑选美食
-  </button>
+<view class="index_wrapper">
+  <view class="index_inner">
+      <button class="start_btn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindNext" >
+        开 始
+      </button>
+      <text class="description">发 现 生 活 的 味 道</text>
+  </view>
 </view>

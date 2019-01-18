@@ -23,6 +23,7 @@ Page({
 	 */
 	bindNext(e) {
 	  const openid = app.utils.getCache('openid');
+	  let otherOpenId = app.utils.getCache('otherOpenId');
     if (openid && e.detail.userInfo) {
 	  	let userInfo = e.detail.userInfo
 	  	let data = {
@@ -34,7 +35,7 @@ Page({
 			  province	: userInfo.province,
 			  province	: userInfo.province,
 			  avatarUrl	: userInfo.avatarUrl,
-			  otherOpenId: ''
+			  otherOpenId: otherOpenId
 		  }
 	    app.http.$_post('putUserInfo', data).then((xhr) => {
 			    app.utils.setCache('uid', xhr.data.uid);

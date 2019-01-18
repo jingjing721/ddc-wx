@@ -318,7 +318,6 @@ Page({
    */
   onShareAppMessage(options){
 	  let that = this;
-	  let uid =
 	  let shareObj = {
 		  title: "拼桌菜", // 默认是小程序的名称
 		  path: '/pages/index/index',  // 默认是当前页面，必须是以‘/’开头的完整路径
