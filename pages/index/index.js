@@ -10,11 +10,23 @@ Page({
    * 页面的初始数据
    */
   data: {
+  	uid: '',
   },
 	/**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+		wx.hideShareMenu();
+		let scene = decodeURIComponent(options.scene);
+		let uid = '';
+		if (scene) {
+			uid = app.utils.getQueryString(scene, ['uid']).uid;
+		} else {
+			uid = options.uid
+		}
+  	if (options.uid || scene) {
+  		this.data.uid = uid
+	  }
   },
 	/*
 	 * Description: 授权获取用户信息
@@ -34,8 +46,9 @@ Page({
 			  province	: userInfo.province,
 			  province	: userInfo.province,
 			  avatarUrl	: userInfo.avatarUrl,
-			  otherOpenId: ''
+			  otherOpenId: this.data.uid
 		  }
+		  console.log(data, 'orderUid');
 	    app.http.$_post('putUserInfo', data).then((xhr) => {
 			    app.utils.setCache('uid', xhr.data.uid);
 			    app.utils.setCache('qrCode', xhr.data.qrCode);

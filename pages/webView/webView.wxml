@@ -1,4 +1,0 @@
-<!--pages/webView/webView.wxml-->
-<view>
-  <web-view src="http://mp.weixin.qq.com/s?__biz=MzA3NDMxNTA5Ng==&mid=504205395&idx=1&sn=0a55f7d6896ed12b79dcb4f9db69dd8b&chksm=04f89464338f1d7273cd0ad187214fd5851d6062d8259e48f37938bd3d2e952fa6ea9054b488#rd" bindmessage="{{bindmessage}}"></web-view>
-</view>

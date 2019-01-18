@@ -6,7 +6,7 @@
  */
 export function navigateTo(url, params) {
 	url += (url.indexOf("?") != -1) ? "" : "?";
-	for(var i in params) {
+	for(let i in params) {
 		url += ((url.indexOf("=") != -1) ? "&" : "") + i + "=" + params[i];
 	}
 	wx.navigateTo({
@@ -73,11 +73,27 @@ export function dishId(data) {
 	})
 	return resultArray.toString();
 }
+
+/*
+ * Description: url 字符串
+ * Author: yanlichen <lichen.yan@daydaycook.com.cn>
+ * Date: 2019/1/18
+ */
+export function getQueryString(url, name) {
+		let urlArray = url.split('_');
+		let tempObj = {}
+		name.forEach((item, index) => {
+			Object.assign(tempObj, {[item] : urlArray[index]})
+		})
+		return tempObj
+}
+
 export default {
 	navigateTo,
 	showToast,
 	deepCopy,
 	setCache,
 	getCache,
-	dishId
+	dishId,
+	getQueryString,
 }

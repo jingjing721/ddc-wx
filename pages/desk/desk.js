@@ -16,6 +16,7 @@ Page({
 	 * Date: 2019/1/5
 	 */
   onLoad: function () {
+	  wx.hideShareMenu();
   	this.getDesk();
   },
 	/*
