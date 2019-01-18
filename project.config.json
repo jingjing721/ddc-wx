@@ -56,8 +56,8 @@
 					"id": 2,
 					"name": "index",
 					"pathName": "pages/index/index",
-					"query": "scene=1234_56_789",
-					"scene": "1012"
+					"query": "",
+					"scene": "1001"
 				}
 			]
 		}

@@ -40,5 +40,6 @@
       type="primary"
       bindtap="bindNext"
       class="nextStep"
+      wx:if="{{isBottonShow}}"
   >继 续</button>
 </view>

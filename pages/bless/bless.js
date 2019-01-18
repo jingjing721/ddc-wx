@@ -8,9 +8,10 @@ Page({
   data: {
 	  blessData: [],
 	  bg: '',
-    blessText: '',
-    currentIndex: -1,
-    blessList: [],
+      blessText: '',
+      currentIndex: -1,
+      blessList: [],
+      isBottomShow: false,  //底部操作默认隐藏
   },
 
   /**
@@ -36,7 +37,8 @@ Page({
 		}
 		app.http.$_post('getBless', data).then((xhr) => {
 			this.setData({
-				blessList: xhr.data
+				blessList: xhr.data,
+                isBottomShow: true
 			})
 			wx.hideLoading();
 		})

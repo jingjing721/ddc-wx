@@ -42,10 +42,10 @@ Page({
 			  nickName: userInfo.nickName,
 			  gender: userInfo.gender,
 			  language: userInfo.language,
-			  city	: userInfo.city,
-			  province	: userInfo.province,
-			  province	: userInfo.province,
-			  avatarUrl	: userInfo.avatarUrl,
+			  city: userInfo.city,
+			  province: userInfo.province,
+			  province: userInfo.province,
+			  avatarUrl: userInfo.avatarUrl,
 			  otherOpenId: this.data.uid
 		  }
 		  console.log(data, 'orderUid');
