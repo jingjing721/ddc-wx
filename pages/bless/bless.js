@@ -30,10 +30,7 @@ Page({
 		wx.showLoading({
 			title: '数据加载中...',
 		})
-		const openid = app.utils.getCache('openid');
 		let data = {
-			wxType: 2,
-			openId: openid,
 			pageName: '祝福语'
 		}
 		app.http.$_post('getBless', data).then((xhr) => {
@@ -77,10 +74,7 @@ Page({
 	 * Date: 2019/1/16
 	 */
 	subSave() {
-		const openid = app.utils.getCache('openid');
 		let data = {
-			wxType: 2,
-			openId: openid,
 			pageName: '祝福语',
 			bless: this.data.blessText,
 			ids: app.utils.dishId(this.data.blessData)

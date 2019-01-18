@@ -1,3 +1,4 @@
+import * as utils from 'util.js'
 const IPHOST = 'https://mcn-app-d.daydaycook.com.cn'; // 域名地址
 const SYSTEM = 'program'; // 路径中系统
 const VERSION = 'v1.0.0' // 当前接口版本
@@ -27,8 +28,10 @@ export function $_get(url, data) {
  * Author: yanlichen <lichen.yan@daydaycook.com.cn>
  * Date: 2019/1/8
  */
-function httpPromise(url, data, method) {
+function httpPromise(url, params, method) {
 	return new Promise((resolve, reject) => {
+		let openId = utils.getCache('openid');
+		let data = Object.assign({}, params, {wxType: 2, openId });
 		wx.request({
 			url: `${IPHOST}/mcn/${SYSTEM}/${VERSION}/${url}`,
 			data,

@@ -8,9 +8,8 @@ Page({
 	  resultData: [], // 数据源
     resultBg: '', // 背景桌
 	  resultText: '', // 祝福语
-	  logo: '../../images/logo.png',
-	  close: '../../images/close.png',
-	  code: '../../images/code.png',
+	  shareImg: '../../images/shareImg.jpg',
+	  code: '',
 	  canvasBg: '', // 图片路径
 	  saveImgBtnHidden: true, // 保存相册
 	  openSettingBtnHidden: false, // 去授权
@@ -24,6 +23,7 @@ Page({
       resultData: JSON.parse(options.resultData),
       resultBg: options.bg,
 	    resultText: options.blessText,
+	    code: app.utils.getCache('qrCode'),
     })
   },
 	/**
@@ -31,8 +31,21 @@ Page({
    */
   onReady () {
 		const ctx = wx.createCanvasContext('canvasId');
-		Promise.all([this.getImageInfoBg()].concat(this.getImageInfo())).then((sucRes) => {
-			sucRes.shift()  // 只需要 getImageInfo 中的数据
+		wx.showLoading({
+			title: '请稍后...',
+		})
+		let imageArray = [
+			this.getImagePromiseArr(this.data.resultBg),
+			this.getImagePromiseArr(this.data.code),
+			...this.getImageInfo()
+		]
+		Promise.all(imageArray).then((sucRes) => {
+			wx.hideLoading();
+			this.data.resultBg = sucRes[0].path;
+			this.data.code = sucRes[1].path;
+			console.log(sucRes)
+			//return false
+			sucRes.splice(0,2)
 			this.data.resultData.forEach((item, index) => { // 拉取微信服务器数据之后重新复制 开始绘制
 				item.foodImg = sucRes[index].path
 			})
@@ -43,7 +56,7 @@ Page({
 				this.drawPicture();
 			}, 500)
 		}, () => {
-				app.utils.showToast('图片资源获取失败, 请返回上一页重新拉取资源');
+				app.utils.showToast('图片资源获取失败');
 		})
   },
 	/*
@@ -54,11 +67,15 @@ Page({
 	 */
 	drawImg(ctx) {
 		ctx.setFillStyle('#fff')
-		ctx.fillRect(0, 0, 375, 500)
+		ctx.fillRect(0, 0, 375, 450)
 		ctx.drawImage(this.data.resultBg, 0, 35, 375, 334); // 绘制背景图
-		ctx.drawImage(this.data.logo, 80, 8, 18, 18) // 绘制logo
-		ctx.drawImage(this.data.close, 102, 12, 10, 10) // 绘制close
-		ctx.drawImage(this.data.code, 270, 330, 100, 100) // 绘制code
+		ctx.save();
+		ctx.beginPath(); //开始绘制
+		//先画个圆
+		ctx.arc(100 / 2 + 270, 100 / 2 + 330, 100 / 2, 0, Math.PI * 2);
+		ctx.clip();//画好了圆 剪切
+		ctx.drawImage(this.data.code, 270, 330, 100, 100);  //网络图片需要先上传到微信服务器再进行渲染
+		ctx.restore();
 		this.data.resultData.sort(this.sortNumber('zindex')) // 排序之后绘制层级
 		this.data.resultData.forEach((item) => { // 绘制 手动添加的菜品
 			ctx.drawImage(item.foodImg, item.x, item.y + 35, 60, 60);
@@ -74,23 +91,26 @@ Page({
 		let userInfo = app.utils.getCache('userInfo'); // 获取用户信息
 		ctx.setFontSize(14);
 		ctx.setFillStyle("#000");
-		ctx.fillText(`${userInfo.nickName}的新年餐桌`, 120, 22) // 绘制头信息
+		ctx.setTextAlign('center');
+		ctx.fillText(`${userInfo.nickName}的新年餐桌`, wx.getSystemInfoSync().windowWidth / 2, 22) // 绘制头信息
 		ctx.setTextAlign('center');
 		ctx.setFillStyle("#fb7f59");
 		ctx.fillText(this.data.resultText, wx.getSystemInfoSync().windowWidth / 2, 60); // 祝福居中
 		ctx.setFillStyle("#000");
 		ctx.fillText('扫码搭配你的新年餐桌', 170, 400);
-		ctx.fillText('日日煮APP，发现生活的味道', 150, 420);
+		ctx.fillText('讲述你的新年故事', 185, 420);
 	},
 	/*
-	 * Description: 对网络图片进行遍历下载之后在绘制canvas
+	 * Description: 对网络图片进行下载之后在绘制canvas imgSrc:图片路径地址
+	 * Types：imgSrc -> String
 	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
 	 * Date: 2019/1/12
 	 */
-	getImagePromiseArr(item) {
+	getImagePromiseArr(imgSrc) {
+		console.log(imgSrc, 'imgSrc')
 	 	return new Promise((resolve, reject) => {
 		  wx.getImageInfo({
-			  src: item.foodImg, // 服务器返回的带参数的小程序码地址
+			  src: imgSrc, // 服务器返回的带参数的小程序码地址
 			  success: resolve,
 			  fail: function () {
 				  app.utils.showToast('图片资源获取失败, 请返回上一页重新拉取资源');
@@ -105,31 +125,10 @@ Page({
 	 */
 	getImageInfo() {
 	 	let promiseArr = []
-		this.data.resultData.map((itm) => {
-			promiseArr.push(this.getImagePromiseArr(itm))
+		this.data.resultData.map((item) => {
+			promiseArr.push(this.getImagePromiseArr(item.foodImg))
 		})
 		return promiseArr
-	},
-
-	/*
-	 * Description: 单个图片下载处理
-	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
-	 * Date: 2019/1/12
-	 */
-	getImageInfoBg(){
-		let that = this;
-		return new Promise((resolve => {
-			wx.getImageInfo({
-				src: that.data.resultBg, // 服务器返回的带参数的小程序码地址
-				success: function (res) {
-					that.data.resultBg = res.path
-					resolve(true)
-				},
-				fail: function () {
-					app.utils.showToast('图片资源获取失败, 请返回上一页重新拉取资源');
-				}
-			})
-		}))
 	},
 	/*
 	 * Description: 数组对象进行有小到大排序
@@ -179,10 +178,7 @@ Page({
 	 * Date: 2019/1/16
 	 */
 	subSave() {
-		const openid = app.utils.getCache('openid');
 		let data = {
-			wxType: 2,
-			openId: openid,
 			pageName: '用户提交',
 			bless: this.data.resultText,
 			ids: app.utils.dishId(this.data.resultData)
@@ -219,7 +215,7 @@ Page({
 			x: 0,
 			y: 0,
 			width: 375,
-			height: 500,
+			height: 450,
 			fileType: 'jpg',
 			canvasId: 'canvasId',
 			success(res) {
@@ -262,8 +258,18 @@ Page({
 	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
 	 * Date: 2019/1/15
 	 */
-	viewOpen() {
-		app.utils.navigateTo('../webView/webView')
+	bindNavTo() {
+		wx.navigateToMiniProgram({
+			appId: 'wx50794ebcda998678',
+			path: '/pages/ddctime/ddctime',
+			extraData: {
+				foo: 'bar'
+			},
+			envVersion: 'develop',
+			success(res) {
+				// 打开成功
+			}
+		})
 	},
   /**
    * 生命周期函数--监听页面显示

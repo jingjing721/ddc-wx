@@ -44,7 +44,7 @@
 					"id": 0,
 					"name": "result",
 					"pathName": "pages/result/result",
-					"query": "resultData=[{\"src\":\"https://mcn-video.daydaycook.com.cn/6e956c8bc1f04dfbbeffc0a9acb463c2.png\",\"id\":3,\"x\":94,\"y\":77,\"zindex\":0},{\"src\":\"https://mcn-video.daydaycook.com.cn/1a85ff5460f34300b9afe319a36e1dc5.png\",\"id\":2,\"x\":215,\"y\":95,\"zindex\":1},{\"src\":\"https://mcn-video.daydaycook.com.cn/b187cca134ea419ebd67f3df2a0fee44.png\",\"id\":4,\"x\":165,\"y\":235,\"zindex\":2},{\"src\":\"https://mcn-video.daydaycook.com.cn/1a85ff5460f34300b9afe319a36e1dc5.png\",\"id\":2,\"x\":75,\"y\":200,\"zindex\":3},{\"src\":\"https://mcn-video.daydaycook.com.cn/da724a62a7b240949a16c407b38faef6.png\",\"id\":5,\"x\":155,\"y\":154,\"zindex\":4}]&bg=https://mcn-video.daydaycook.com.cn/4f27995f3e18400cb8d83c251d61e850.png&blessText=发帖被加精"
+					"query": "resultData=[{\"id\":61,\"foodStyle\":\"rouqindanpin\",\"foodName\":\"四喜丸子/狮子头\",\"foodImg\":\"https://mcn-video.daydaycook.com.cn/f457565d683945688345c167f5bac4f9.png\",\"x\":167,\"y\":172,\"zindex\":0},{\"id\":63,\"foodStyle\":\"rouqindanpin\",\"foodName\":\"回锅肉\",\"foodImg\":\"https://mcn-video.daydaycook.com.cn/f457565d683945688345c167f5bac4f9.png\",\"x\":105,\"y\":170,\"zindex\":1},{\"id\":65,\"foodStyle\":\"rouqindanpin\",\"foodName\":\"番茄牛肉锅\",\"foodImg\":\"https://mcn-video.daydaycook.com.cn/8066f0cd16ec4a068c109e72d7f6834d.png\",\"x\":182,\"y\":138,\"zindex\":2}]&bg=https://mcn-video.daydaycook.com.cn/967ea9c3b3934682978638f4f6395ca5.png&blessText=吃得饱睡得好"
 				},
 				{
 					"id": 1,

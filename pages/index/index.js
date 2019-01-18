@@ -23,15 +23,9 @@ Page({
 	 */
 	bindNext(e) {
 	  const openid = app.utils.getCache('openid');
-	  if (!openid) {
-	    app.utils.showToast('openid 不存在');
-	    return false
-    }
-    if (e.detail.userInfo) {
+    if (openid && e.detail.userInfo) {
 	  	let userInfo = e.detail.userInfo
 	  	let data = {
-	  		wxType: 2,
-			  openId: openid, // 扫码自带微信openId 当值为1时,表示由公众号进入
 			  pageName: '扫码入口',
 			  nickName: userInfo.nickName,
 			  gender: userInfo.gender,
@@ -42,7 +36,10 @@ Page({
 			  avatarUrl	: userInfo.avatarUrl,
 			  otherOpenId: ''
 		  }
-	    app.http.$_post('putUserInfo', data).then(() => {})
+	    app.http.$_post('putUserInfo', data).then((xhr) => {
+			    app.utils.setCache('uid', xhr.data.uid);
+			    app.utils.setCache('qrCode', xhr.data.qrCode);
+	    })
 	    app.utils.setCache('userInfo', e.detail.userInfo);
 	    app.utils.navigateTo('../desk/desk');
     }

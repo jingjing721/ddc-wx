@@ -2,7 +2,8 @@
 import * as http from 'utils/http.js'
 import * as utils from 'utils/util.js'
 App({
-  onLaunch: function () {
+  onLaunch: function (options) {
+  	console.log(options)
 	  /*
 		 * Description: 登陆获取用户openid；发送 res.code 到后台换取 openId, sessionKey
 		 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
@@ -11,7 +12,7 @@ App({
 	  console.log('进入');
 	  wx.login({
 		  success: res => {
-			  http.$_post('getOpenId',{jsCode: res.code}).then(({data}) => {
+			  http.$_post('getOpenId', {jsCode: res.code}).then(({data}) => {
 				  utils.setCache('openid', data.openid)
 				  utils.setCache('sessionKey', data.session_key)
 			  })

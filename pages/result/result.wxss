@@ -20,15 +20,14 @@ page{
 .canvas-wrap image {
   display: block;
   width: 94%;
-  min-height: 400px;
   margin: 0 auto;
 }
 .nextStep {
   margin: 0 auto;
 }
 .wx-code {
-  width: 600rpx;
-  margin:32rpx auto 0;
+  width: 686rpx;
+  margin:32rpx auto;
 }
 .wx-code image {
   display: block;
@@ -38,4 +37,27 @@ page{
 .loading{
   text-align: center;
   margin-top: 100rpx;
+}
+.step-botton{
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-botton button {
+  margin: 0 20rpx;
+}
+.shareButton {
+  width: 532rpx;
+  height: 90rpx;
+  line-height: 80rpx;
+  background: #fff;
+  border: #FF6583 solid 5rpx;
+  box-shadow: 5rpx 5rpx 10rpx #FFBE67;
+  border-radius:50px;
+  margin-top: 20rpx;
+  font-size: 32rpx;
+  color: #FF6583;
+  margin-bottom: 26rpx;
 }
