@@ -12,6 +12,7 @@ Page({
       currentIndex: -1,
       blessList: [],
       isBottomShow: false,  //底部操作默认隐藏
+      status: 0,      //输入框是否聚焦，0代表否，1代表是
   },
 
   /**
@@ -84,6 +85,21 @@ Page({
 		}
 		app.http.$_post('clickNext', data).then(() => {});
 	},
+  /*
+  * Description: 输入框聚焦  失去焦点
+  * Author: wangjingjing <jingjing.wang@daydaycook.com.cn>
+  * Date: 2019/1/21
+  */
+  focus: function(){
+    this.setData({
+        status: 1,
+    });
+  },
+  blur: function(){
+    this.setData({
+        status: 0,
+    });
+  },
   onReady: function () {
 
   },
