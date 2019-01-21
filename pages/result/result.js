@@ -9,6 +9,7 @@ Page({
     resultBg: '', // 背景桌
 	  resultText: '', // 祝福语
 	  shareImg: '../../images/shareImg.jpg',
+	  resultTextBg: '../../images/text-bg.png',
 	  code: '',
 	  canvasBg: '', // 图片路径
 	  saveImgBtnHidden: true, // 保存相册
@@ -64,9 +65,13 @@ Page({
 	 * Date: 2019/1/12
 	 */
 	drawImg(ctx) {
+		const metrics = ctx.measureText(this.data.resultText)
+		console.log(metrics, 'metrics')
+		// wx.getSystemInfoSync().windowWidth / 2, 60
 		ctx.setFillStyle('#fff')
 		ctx.fillRect(0, 0, this.remSize(375), this.remSize(500))
 		ctx.drawImage(this.data.resultBg, 0, 35, this.remSize(375), this.remSize(334)); // 绘制背景图
+		ctx.drawImage(this.data.resultTextBg, (wx.getSystemInfoSync().windowWidth - metrics.width * 1.4) / 2 - 15, 45,  metrics.width * 1.4 + 30, 30); // 绘制文字背景
 		ctx.save();
 		ctx.beginPath(); //开始绘制
 		//先画个圆
@@ -92,8 +97,8 @@ Page({
 		ctx.setTextAlign('center');
 		ctx.fillText(`${userInfo.nickName}的新年餐桌`, wx.getSystemInfoSync().windowWidth / 2, 22) // 绘制头信息
 		ctx.setTextAlign('center');
-		ctx.setFillStyle("#fb7f59");
-		ctx.fillText(this.data.resultText, wx.getSystemInfoSync().windowWidth / 2, 60); // 祝福居中
+		ctx.setFillStyle("#fff");
+		ctx.fillText(this.data.resultText, wx.getSystemInfoSync().windowWidth / 2, 65); // 祝福居中
 		ctx.setFillStyle("#000");
 		ctx.fillText('扫码搭配你的新年餐桌', this.remSize(170), this.remSize(400));
 		ctx.fillText('讲述你的新年故事', this.remSize(185), this.remSize(420));
