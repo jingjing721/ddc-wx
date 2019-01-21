@@ -19,15 +19,14 @@ Page({
 		wx.hideShareMenu();
 		let scene = decodeURIComponent(options.scene);
 		let uid = '';
-		if (scene) {
+		if (scene !== 'undefined') {
 			uid = app.utils.getQueryString(scene, ['uid']).uid;
 		} else {
-			uid = options.uid
+			uid = options.uid || ''
 		}
-  	if (options.uid || scene) {
-  		this.data.uid = uid
-	  }
-  },
+		this.data.uid = uid
+		console.log(this.data.uid, 'uid');
+	},
 	/*
 	 * Description: 授权获取用户信息
 	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
