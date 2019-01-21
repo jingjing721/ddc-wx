@@ -35,8 +35,8 @@ Page({
 	 */
 	bindNext(e) {
 	  const openid = app.utils.getCache('openid');
-    if (openid && e.detail.userInfo) {
-	  	let userInfo = e.detail.userInfo
+		let userInfo = e.detail.userInfo;
+		if (openid && userInfo) {
 	  	let data = {
 			  pageName: '扫码入口',
 			  nickName: userInfo.nickName,
@@ -53,7 +53,7 @@ Page({
 			    app.utils.setCache('uid', xhr.data.uid);
 			    app.utils.setCache('qrCode', xhr.data.qrCode);
 	    })
-	    app.utils.setCache('userInfo', e.detail.userInfo);
+	    app.utils.setCache('userInfo', userInfo);
 	    app.utils.navigateTo('../desk/desk');
     }
   },

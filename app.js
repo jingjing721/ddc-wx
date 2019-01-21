@@ -8,7 +8,6 @@ App({
 		 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
 		 * Date: 2019/1/9
 		 */
-	  console.log('进入');
 	  wx.login({
 		  success: res => {
 			  http.$_post('getOpenId', {jsCode: res.code}).then(({data}) => {

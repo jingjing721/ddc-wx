@@ -38,28 +38,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
-			"list": [
-				{
-					"id": 0,
-					"name": "result",
-					"pathName": "pages/result/result",
-					"query": "resultData=[{\"id\":61,\"foodStyle\":\"rouqindanpin\",\"foodName\":\"四喜丸子/狮子头\",\"foodImg\":\"https://mcn-video.daydaycook.com.cn/f457565d683945688345c167f5bac4f9.png\",\"x\":167,\"y\":172,\"zindex\":0},{\"id\":63,\"foodStyle\":\"rouqindanpin\",\"foodName\":\"回锅肉\",\"foodImg\":\"https://mcn-video.daydaycook.com.cn/f457565d683945688345c167f5bac4f9.png\",\"x\":105,\"y\":170,\"zindex\":1},{\"id\":65,\"foodStyle\":\"rouqindanpin\",\"foodName\":\"番茄牛肉锅\",\"foodImg\":\"https://mcn-video.daydaycook.com.cn/8066f0cd16ec4a068c109e72d7f6834d.png\",\"x\":182,\"y\":138,\"zindex\":2}]&bg=https://mcn-video.daydaycook.com.cn/967ea9c3b3934682978638f4f6395ca5.png&blessText=吃得饱睡得好"
-				},
-				{
-					"id": 1,
-					"name": "desk",
-					"pathName": "pages/desk/desk",
-					"query": ""
-				},
-				{
-					"id": 2,
-					"name": "index",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": "1001"
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }
