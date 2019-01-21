@@ -39,7 +39,7 @@ Page({
 		app.http.$_post('getBless', data).then((xhr) => {
 			this.setData({
 				blessList: xhr.data,
-                isBottomShow: true
+				isBottomShow: true
 			})
 			wx.hideLoading();
 		})
@@ -57,9 +57,11 @@ Page({
       currentIndex: index
 		})
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+	/*
+	 * Description: 生命周期函数--监听页面初次渲染完成
+	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>
+	 * Date: 2019/1/21
+	 */
   bindNext() {
     if (this.data.blessText == '' || this.data.blessText == null) {
 	    app.utils.showToast('请填写祝福语')
