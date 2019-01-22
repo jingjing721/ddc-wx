@@ -7,7 +7,7 @@
   </view>
 
   <view class="bless_bottom" wx:if="{{isBottomShow}}">
-    <input class="bless_input" placeholder-class="{{status==0 ? 'placeholder_input':'placeholder_active'}}" bindfocus="focus" bindblur="blur" bindinput="bindBless" placeholder="您也能在这里写下您的新年祝福哦！" value="{{blessText}}" />
+    <input class="bless_input" maxlength="18" placeholder-class="{{status==0 ? 'placeholder_input':'placeholder_active'}}" bindfocus="focus" bindblur="blur" bindinput="bindBless" placeholder="您也能在这里写下您的新年祝福哦！" value="{{blessText}}" />
     <button
         type="primary"
         bindtap="bindNext"

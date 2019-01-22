@@ -1,6 +1,6 @@
 <!--pages/result.wxml-->
 <view class="result-wrap">
-  <canvas style="width: 100%; height: 900rpx; position: fixed; left: -9999px; overflow: hidden;" canvas-id="canvasId"></canvas>
+  <canvas style="width: 100%; height: 1000rpx; position: fixed; left: -9999px; overflow: hidden;" canvas-id="canvasId"></canvas>
   <view class="canvas-wrap">
     <image src="{{canvasBg}}" mode="widthFix"></image>
     <view class="step-botton">

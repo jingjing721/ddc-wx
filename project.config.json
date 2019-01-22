@@ -13,7 +13,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.4",
+	"libVersion": "2.5.1",
 	"appid": "wxb52f0b82d5239243",
 	"projectname": "ddc-eve",
 	"debugOptions": {
@@ -38,8 +38,16 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "result",
+					"pathName": "pages/result/result",
+					"query": "resultData=[{\"id\":61,\"foodStyle\":\"rouqindanpin\",\"foodName\":\"四喜丸子/狮子头\",\"foodImg\":\"https://mcn-video.daydaycook.com.cn/e523072eef9945b28d515faa58d99ede.png\",\"x\":159,\"y\":169,\"zindex\":0},{\"id\":63,\"foodStyle\":\"rouqindanpin\",\"foodName\":\"回锅肉\",\"foodImg\":\"https://mcn-video.daydaycook.com.cn/02e7a7f785e44bc1840c3405f44fca6f.png\",\"x\":150,\"y\":164,\"zindex\":1}]&bg=https://mcn-video.daydaycook.com.cn/967ea9c3b3934682978638f4f6395ca5.png&blessText=发帖被加精发帖被加精帖被加精精精精精",
+					"scene": "1001"
+				}
+			]
 		}
 	}
 }

@@ -65,23 +65,22 @@ Page({
 	 * Date: 2019/1/12
 	 */
 	drawImg(ctx) {
-		const metrics = ctx.measureText(this.data.resultText)
-		console.log(metrics, 'metrics')
+		// const metrics = ctx.measureText(this.data.resultText)
 		// wx.getSystemInfoSync().windowWidth / 2, 60
 		ctx.setFillStyle('#fff')
 		ctx.fillRect(0, 0, this.remSize(375), this.remSize(500))
-		ctx.drawImage(this.data.resultBg, 0, 35, this.remSize(375), this.remSize(334)); // 绘制背景图
-		ctx.drawImage(this.data.resultTextBg, (wx.getSystemInfoSync().windowWidth - metrics.width * 1.4) / 2 - 15, 45,  metrics.width * 1.4 + 30, 30); // 绘制文字背景
+		ctx.drawImage(this.data.resultBg, 0, 80, this.remSize(375), this.remSize(334)); // 绘制背景图
+		// ctx.drawImage(this.data.resultTextBg, (wx.getSystemInfoSync().windowWidth - metrics.width * 1.4) / 2 - 15, 45,  metrics.width * 1.4 + 30, 30); // 绘制文字背景
 		ctx.save();
 		ctx.beginPath(); //开始绘制
 		//先画个圆
-		ctx.arc(this.remSize(100) / 2 + this.remSize(265), this.remSize(100) / 2 + this.remSize(330), this.remSize(100) / 2, 0, Math.PI * 2);
+		ctx.arc(this.remSize(100) / 2 + this.remSize(265), this.remSize(100) / 2 + this.remSize(375), this.remSize(100) / 2, 0, Math.PI * 2);
 		ctx.clip();//画好了圆 剪切
-		ctx.drawImage(this.data.code, this.remSize(265), this.remSize(330), this.remSize(100), this.remSize(100));
+		ctx.drawImage(this.data.code, this.remSize(265), this.remSize(375), this.remSize(100), this.remSize(100));
 		ctx.restore();
 		this.data.resultData.sort(this.sortNumber('zindex')) // 排序之后绘制层级
 		this.data.resultData.forEach((item) => { // 绘制 手动添加的菜品
-			ctx.drawImage(item.foodImg, item.x, item.y + 35, this.remSize(60), this.remSize(60));
+			ctx.drawImage(item.foodImg, item.x, item.y + 80, this.remSize(60), this.remSize(60));
 		})
 	},
 	/*
@@ -97,11 +96,12 @@ Page({
 		ctx.setTextAlign('center');
 		ctx.fillText(`${userInfo.nickName}的新年餐桌`, wx.getSystemInfoSync().windowWidth / 2, 22) // 绘制头信息
 		ctx.setTextAlign('center');
-		ctx.setFillStyle("#fff");
+		ctx.setFontSize(20);
+		ctx.font = 'Microsoft YaHei, normal 14px Arial,PingFang SC,Hiragino Sans GB';
 		ctx.fillText(this.data.resultText, wx.getSystemInfoSync().windowWidth / 2, 65); // 祝福居中
-		ctx.setFillStyle("#000");
-		ctx.fillText('扫码搭配你的新年餐桌', this.remSize(170), this.remSize(400));
-		ctx.fillText('讲述你的新年故事', this.remSize(185), this.remSize(420));
+		ctx.setFontSize(14);
+		ctx.fillText('扫码识别小程序码', this.remSize(170), this.remSize(445));
+		ctx.fillText('搭配您的餐桌，讲述新年故事', this.remSize(135), this.remSize(465));
 	},
 	/*
 		*Description: 按照375大小转换px 计算不同屏幕设备大小转换
@@ -324,7 +324,7 @@ Page({
   onShareAppMessage(options){
 	  let uid = app.utils.getCache('uid');
 	  let shareObj = {
-		  title: "拼桌菜", // 默认是小程序的名称
+		  title: "搭配您的餐桌，讲述您的新年故事", // 默认是小程序的名称
 		  path: `/pages/index/index?uid=${uid}`,  // 默认是当前页面，必须是以‘/’开头的完整路径
 		  imageUrl: '',  //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
 		  success (res) {// 转发成功之后的回调
