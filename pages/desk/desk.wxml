@@ -29,10 +29,16 @@
     </scroll-view>
     <scroll-view class="scroll-view_cont" scroll-x style="width: 100%; white-space: nowrap; display: flex">
       <view class="left">
-          <image wx:for="{{listData}}" wx:if="{{index%2 == 0}}" src="{{item.foodImg}}" wx:key="{{item.id}}" class="view-img" data-index="{{index}}" data-cid="{{item.foodStyle}}" bindtap="bindAdd"></image>
+        <view class="view-item" wx:for="{{listData}}" wx:if="{{index%2 == 0}}">
+          <image src="{{item.foodImg}}" wx:key="{{item.id}}" class="view-img" data-index="{{index}}" data-cid="{{item.foodStyle}}" bindtap="bindAdd"></image>
+          <text class="view-text">{{item.foodName}}</text>
+        </view>
       </view>
       <view class="right">
-          <image wx:for="{{listData}}" wx:if="{{index%2 == 1}}" src="{{item.foodImg}}" wx:key="{{item.id}}" class="view-img" data-index="{{index}}" data-cid="{{item.foodStyle}}" bindtap="bindAdd"></image>
+        <view class="view-item" wx:for="{{listData}}" wx:if="{{index%2 == 1}}">
+          <image src="{{item.foodImg}}" wx:key="{{item.id}}" class="view-img" data-index="{{index}}" data-cid="{{item.foodStyle}}" bindtap="bindAdd"></image>
+          <text class="view-text">{{item.foodName}}</text>
+        </view>
       </view>
     </scroll-view>
   </view>
