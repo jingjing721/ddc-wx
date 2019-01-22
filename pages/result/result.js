@@ -97,7 +97,7 @@ Page({
 		ctx.fillText(`${userInfo.nickName}的新年餐桌`, wx.getSystemInfoSync().windowWidth / 2, 22) // 绘制头信息
 		ctx.setTextAlign('center');
 		ctx.setFontSize(20);
-		ctx.font = 'Microsoft YaHei, normal 14px Arial,PingFang SC,Hiragino Sans GB';
+		ctx.font = 'Heiti TC';
 		ctx.fillText(this.data.resultText, wx.getSystemInfoSync().windowWidth / 2, 65); // 祝福居中
 		ctx.setFontSize(14);
 		ctx.fillText('扫码识别小程序码', this.remSize(170), this.remSize(445));
