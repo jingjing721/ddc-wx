@@ -26,7 +26,6 @@ Page({
 			uid = options.uid || ''
 		}
 		this.data.uid = uid
-		console.log(this.data.uid, 'uid');
 	},
 	/*
 	 * Description: 授权获取用户信息

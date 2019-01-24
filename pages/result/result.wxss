@@ -1,7 +1,7 @@
 @import "../index.wxss";
 /* pages/result.wxss */
 page{
-  height: auto;
+  height: 100%;
 }
 .result-wrap {
   padding-top: 1rpx;

@@ -9,7 +9,7 @@ Page({
 	  bgUrl: '',
 	  listData: [], // 单个菜品数组
 	  isActive: 0,
-      isBottonShow: false,  //下一步按钮默认隐藏
+	  isBottonShow: false,  //下一步按钮默认隐藏
   },
 	/*
 	 * Description: 初始化第一分类数据
@@ -37,7 +37,7 @@ Page({
 				viewData: xhr.data,
 				listData: xhr.data[0].dishes,
 				bgUrl: xhr.data[0].dishes[0].foodImg,
-                isBottonShow: true,
+				isBottonShow: true,
 			})
 			wx.hideLoading();
 		});
@@ -115,10 +115,10 @@ Page({
 	 */
 	bindClass(e) {
 	  this.setData({
-	  	isActive: e.currentTarget.dataset.index,
-      	listData: this.data.viewData[e.currentTarget.dataset.index].dishes,
-    	})
-  	},
+		  isActive: e.currentTarget.dataset.index,
+		  listData: this.data.viewData[e.currentTarget.dataset.index].dishes,
+	  })
+	},
 	/*
 	 * Description: 下一步
 	 * Author: yanlichen <lichen.yan@daydaycook.com.cn>

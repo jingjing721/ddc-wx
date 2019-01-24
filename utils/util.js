@@ -95,7 +95,6 @@ export function getQueryString(url, name) {
  */
 export function getVersion() {
 	let version = wx.getSystemInfoSync().SDKVersion.replace(/\./g, "");
-	console.log(getCache('versionFlag'))
 	if (parseInt(version) < 250 && getCache('versionFlag') != true) {
 		wx.showModal({
 			title: '小贴士',

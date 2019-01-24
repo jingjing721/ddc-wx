@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <movable-area class="movable-wrap" >
+  <movable-area class="movable-wrap">
     <image src="{{bgUrl}}" class="mova-bg" mode="widthFix"></image>
     <movable-view
         bindchange="onChange"
@@ -29,13 +29,13 @@
     </scroll-view>
     <scroll-view class="scroll-view_cont" scroll-x style="width: 100%; white-space: nowrap; display: flex">
       <view class="left">
-        <view class="view-item" wx:for="{{listData}}" wx:if="{{index%2 == 0}}">
+        <view class="view-item" wx:key="{{index}}" wx:for="{{listData}}" wx:if="{{index%2 == 0}}">
           <image src="{{item.foodImg}}" wx:key="{{item.id}}" class="view-img" data-index="{{index}}" data-cid="{{item.foodStyle}}" bindtap="bindAdd"></image>
           <text class="view-text">{{item.foodName}}</text>
         </view>
       </view>
       <view class="right">
-        <view class="view-item" wx:for="{{listData}}" wx:if="{{index%2 == 1}}">
+        <view class="view-item" wx:key="{{index}}" wx:for="{{listData}}" wx:if="{{index%2 == 1}}">
           <image src="{{item.foodImg}}" wx:key="{{item.id}}" class="view-img" data-index="{{index}}" data-cid="{{item.foodStyle}}" bindtap="bindAdd"></image>
           <text class="view-text">{{item.foodName}}</text>
         </view>
