@@ -40,6 +40,7 @@ Page({
 			this.getImagePromiseArr(this.data.code),
 			...this.getImageInfo()
 		]
+		console.log(imageArray)
 		Promise.all(imageArray).then((sucRes) => {
 			wx.hideLoading();
 			this.data.resultBg = sucRes[0].path;
@@ -124,7 +125,7 @@ Page({
 			  src: imgSrc, // 服务器返回的带参数的小程序码地址
 			  success: resolve,
 			  fail: function () {
-				  app.utils.showToast('图片资源获取失败, 请返回上一页重新拉取资源');
+				  app.utils.showToast('图片资源获取失败, 请返回到首页重新拉取资源');
 			  }
 		  })
 	  })
