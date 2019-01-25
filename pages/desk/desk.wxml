@@ -40,7 +40,7 @@
           <text class="view-text">{{item.foodName}}</text>
         </view>
       </view>
-      <icon class="right_icon" wx:if="{{isRightBtn}}"></icon>
+      <icon class="right_icon" wx:if="{{isRightBtn && listData.length > 8}}"></icon>
     </scroll-view>
   </view>
   <button

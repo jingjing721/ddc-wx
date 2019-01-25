@@ -115,15 +115,10 @@ Page({
 	 * Date: 2019/1/5
 	 */
 	bindClass(e) {
-		let isRightBtn = this.data.isRightBtn;
 		let listData = this.data.viewData[e.currentTarget.dataset.index].dishes;
-        if(listData.length <= 8){
-            isRightBtn = false
-        }
 	  this.setData({
 		  isActive: e.currentTarget.dataset.index,
 		  listData: listData,
-          isRightBtn: isRightBtn,
 	  })
 	},
 	/*
@@ -169,14 +164,14 @@ Page({
 	 */
     bindscroll(e) {
 		let left = e.detail.scrollLeft;
-		if ( left >= '5'){
+		if ( left >= 5){
 			this.setData({
-                isRightBtn: false,
+				isRightBtn: false,
 			})
 		}else{
-            this.setData({
-                isRightBtn: true,
-            })
+      this.setData({
+	      isRightBtn: true,
+      })
 		}
 	}
 })
