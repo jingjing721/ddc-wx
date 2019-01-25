@@ -27,7 +27,7 @@
         <view wx:for="{{viewData}}" wx:key="{{index}}" data-index="{{index}}" bindtap="bindClass" class="view-class active-{{isActive == index}}">{{item.foodStyleName}}</view>
       </view>
     </scroll-view>
-    <scroll-view class="scroll-view_cont" scroll-x style="width: 100%; white-space: nowrap; display: flex">
+    <scroll-view class="scroll-view_cont" bindscroll="bindscroll" scroll-x style="width: 100%; white-space: nowrap; display: flex">
       <view class="left">
         <view class="view-item" wx:key="{{index}}" wx:for="{{listData}}" wx:if="{{index%2 == 0}}">
           <image src="{{item.foodImg}}" wx:key="{{item.id}}" class="view-img" data-index="{{index}}" data-cid="{{item.foodStyle}}" bindtap="bindAdd"></image>
@@ -40,6 +40,7 @@
           <text class="view-text">{{item.foodName}}</text>
         </view>
       </view>
+      <icon class="right_icon" wx:if="{{isRightBtn}}"></icon>
     </scroll-view>
   </view>
   <button

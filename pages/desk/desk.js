@@ -10,6 +10,7 @@ Page({
 	  listData: [], // 单个菜品数组
 	  isActive: 0,
 	  isBottonShow: false,  //下一步按钮默认隐藏
+	  isRightBtn: true,     //右侧箭头是否显示
   },
 	/*
 	 * Description: 初始化第一分类数据
@@ -114,9 +115,15 @@ Page({
 	 * Date: 2019/1/5
 	 */
 	bindClass(e) {
+		let isRightBtn = this.data.isRightBtn;
+		let listData = this.data.viewData[e.currentTarget.dataset.index].dishes;
+        if(listData.length <= 8){
+            isRightBtn = false
+        }
 	  this.setData({
 		  isActive: e.currentTarget.dataset.index,
-		  listData: this.data.viewData[e.currentTarget.dataset.index].dishes,
+		  listData: listData,
+          isRightBtn: isRightBtn,
 	  })
 	},
 	/*
@@ -154,5 +161,22 @@ Page({
      */
     onPullDownRefresh() {
         wx.stopPullDownRefresh();
-    }
+    },
+    /*
+	 * Description: 左右滚动时触发
+	 * Author: wangjingjing <jingjing.wang@daydaycook.com.cn>
+	 * Date: 2019/1/25
+	 */
+    bindscroll(e) {
+		let left = e.detail.scrollLeft;
+		if ( left >= '5'){
+			this.setData({
+                isRightBtn: false,
+			})
+		}else{
+            this.setData({
+                isRightBtn: true,
+            })
+		}
+	}
 })
