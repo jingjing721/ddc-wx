@@ -11,6 +11,7 @@ Page({
 	  isActive: 0,
 	  isBottonShow: false,  //下一步按钮默认隐藏
 	  isRightBtn: true,     //右侧箭头是否显示
+	  scrollLeft: 0,
   },
 	/*
 	 * Description: 初始化第一分类数据
@@ -119,6 +120,7 @@ Page({
 	  this.setData({
 		  isActive: e.currentTarget.dataset.index,
 		  listData: listData,
+		  scrollLeft: 0,
 	  })
 	},
 	/*

@@ -17,7 +17,6 @@ Page({
    */
   onLoad: function (options) {
   	app.utils.getVersion();
-		wx.hideShareMenu();
 		let scene = decodeURIComponent(options.scene);
 		let uid = '';
 		if (scene !== 'undefined') {
